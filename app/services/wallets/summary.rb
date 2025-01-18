@@ -3,6 +3,8 @@ class Wallets::Summary
 
   attr_reader :user, :wallet, :current_budget
 
+  Result = Struct.new(:summary)
+
   def initialize(user:)
     @user = user
     @wallet = user.wallet
@@ -11,10 +13,10 @@ class Wallets::Summary
   def call
     create_budget if current_budget.blank?
 
-    {
+    Result.new({
       current_budget: current_budget,
       last_expense: current_budget.expenses.last
-    }
+    })
   end
 
   private
@@ -24,7 +26,10 @@ class Wallets::Summary
   end
 
   def create_budget
-    @create_budget = Budgets::Create.call(wallet: wallet)
+    budget = Budget.create(wallet:, month:, year:)
+    raise "Failed to create budget" unless budget.persisted?
+
+    @current_budget = budget
   end
 
   def month

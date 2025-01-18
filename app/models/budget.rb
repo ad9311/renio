@@ -30,5 +30,13 @@ class Budget < ApplicationRecord
   validates :amount, numericality: { greater_than: 0 }, on: :update
   validates :uid, presence: true, uniqueness: true
 
+  before_validation :set_uid, on: :create
+
   def to_param; uid end
+
+  private
+
+  def set_uid
+    self.uid = "#{wallet.id}-#{month}-#{year}"
+  end
 end

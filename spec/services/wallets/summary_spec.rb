@@ -9,12 +9,10 @@ describe Wallets::Summary, type: :service do
   let(:year) { Time.zone.now.year }
 
   context "when there is a current budget" do
-    before do
-      create(:budget, wallet:)
-    end
+    before { create(:budget, wallet:) }
 
     it "returns the current budget" do
-      expect(call[:current_budget]).to eq(wallet.budgets.where(month:, year:).first)
+      expect(call.summary[:current_budget]).to eq(wallet.budgets.where(month:, year:).first)
     end
   end
 
@@ -26,7 +24,7 @@ describe Wallets::Summary, type: :service do
 
   context "when there is no last expense" do
     it "returns nil" do
-      expect(call[:last_expense]).to be_nil
+      expect(call.summary[:last_expense]).to be_nil
     end
   end
 
@@ -36,7 +34,17 @@ describe Wallets::Summary, type: :service do
     end
 
     it "returns the last expense" do
-      expect(call[:last_expense]).to eq(wallet.budgets.where(month:, year:).first.expenses.last)
+      expect(call.summary[:last_expense]).to eq(wallet.budgets.where(month:, year:).first.expenses.last)
+    end
+  end
+
+  context "when the budget is not created" do
+    let(:budget) { Budget.new }
+
+    it "raises an error" do
+      allow(Budget).to receive(:create).and_return(budget)
+      allow(budget).to receive(:persisted?).and_return(false)
+      expect { call }.to raise_error(RuntimeError, "Failed to create budget")
     end
   end
 end

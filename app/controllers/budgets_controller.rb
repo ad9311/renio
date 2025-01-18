@@ -8,9 +8,7 @@ class BudgetsController < ApplicationController
   def edit; end
 
   def update
-    result = Budgets::Edit.call(budget:, params: budget_params)
-
-    if result.success?
+    if budget.update(budget_params)
       redirect_to budget_path(budget.uid), notice: "Budget updated successfully"
     else
       render :edit, status: :unprocessable_entity
