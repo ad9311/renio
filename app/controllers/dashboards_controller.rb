@@ -1,3 +1,5 @@
 class DashboardsController < ApplicationController
-  def index; end
+  def index
+    @summary = Wallets::Summary.call(user: current_user)
+  end
 end
