@@ -9,7 +9,7 @@ class Wallets::Summary
   end
 
   def call
-    return {} if current_budget.blank?
+    create_budget if current_budget.blank?
 
     {
       current_budget: current_budget,
@@ -20,6 +20,18 @@ class Wallets::Summary
   private
 
   def current_budget
-    @current_budget ||= wallet.budgets.last
+    @current_budget ||= wallet.budgets.where(month: month, year: year).first
+  end
+
+  def create_budget
+    @create_budget = Budgets::Create.call(wallet: wallet)
+  end
+
+  def month
+    Time.zone.now.month
+  end
+
+  def year
+    Time.zone.now.year
   end
 end

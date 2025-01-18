@@ -14,6 +14,6 @@
 
 FactoryBot.define do
   factory :expense_category do
-    name { "MyString" }
+    name { "Test category" }
   end
 end
