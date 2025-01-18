@@ -26,7 +26,7 @@ class Budget < ApplicationRecord
 
   has_many :expenses, dependent: :destroy
 
-  validates :amount, :balance, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  validates :balance, numericality: { less_than_or_equal_to: :amount }
+  validates :amount, :balance, numericality: { greater_than_or_equal_to: 0 }, on: :create
+  validates :amount, numericality: { greater_than: 0 }, on: :update
   validates :uid, presence: true, uniqueness: true
 end

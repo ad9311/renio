@@ -12,18 +12,11 @@ class Budgets::Edit
 
   def call
     validate_amount!
-    puts "##########"
-    puts budget.valid?
-    puts "##########"
-    return Result.new(false) unless budget.valid?
 
-    budget.update!(params)
-    Result.new(true)
+    Result.new(budget.update(params))
   end
 
   def validate_amount!
-    budget.errors.add(:amount, "can't be blank") and return if params[:amount].blank?
-
-    budget.errors.add(:amount, "can't be zero") if params[:amount].to_f.zero?
+    params[:amount] = 0 if params[:amount].blank?
   end
 end
