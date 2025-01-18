@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :budgets, param: :uid, except: %i[new destroy]
+  resources :budgets, param: :uid, except: %i[new destroy] do
+    resources :expenses, except: :index
+  end
 end

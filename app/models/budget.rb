@@ -29,4 +29,6 @@ class Budget < ApplicationRecord
   validates :amount, :balance, numericality: { greater_than_or_equal_to: 0 }, on: :create
   validates :amount, numericality: { greater_than: 0 }, on: :update
   validates :uid, presence: true, uniqueness: true
+
+  def to_param; uid end
 end
