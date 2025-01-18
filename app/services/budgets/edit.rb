@@ -16,6 +16,8 @@ class Budgets::Edit
     Result.new(budget.update(params))
   end
 
+  private
+
   def validate_amount!
     params[:amount] = 0 if params[:amount].blank?
   end
