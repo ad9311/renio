@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   root "dashboards#index"
 
   devise_for :users
+
+  resources :budgets, param: :uid, except: %i[new destroy]
 end

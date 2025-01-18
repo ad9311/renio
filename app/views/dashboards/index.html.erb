@@ -1,2 +1,5 @@
 <h1>Dashboard</h1>
-<%= @summary.inspect %>
+<div>
+  <%= link_to "Current budget", budget_path(@summary[:current_budget].uid) %>
+  <%= link_to "Budgets", budgets_path %>
+</div>

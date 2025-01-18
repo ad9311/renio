@@ -23,14 +23,14 @@ class Budgets::Create
   end
 
   def uid
-    @uid ||= "#{wallet.id}-#{month}-#{year}"
+    "#{wallet.id}-#{month}-#{year}"
   end
 
   def month
-    @month ||= Time.zone.now.month
+    Time.zone.now.month
   end
 
   def year
-    @year ||= Time.zone.now.year
+    Time.zone.now.year
   end
 end
