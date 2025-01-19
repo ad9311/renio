@@ -3,7 +3,7 @@ class Budgets::UpdateBalance
 
   attr_reader :budget, :credit, :debit, :params
 
-  Result = Struct.new(:success?)
+  Result = Struct.new(:success?, :errors)
 
   def initialize(budget:, params:)
     @budget = budget
@@ -19,10 +19,11 @@ class Budgets::UpdateBalance
   private
 
   def update_budget_balance
-    Result.new(budget.update(balance:))
+    result = budget.update(balance:)
+    Result.new(result, budget.errors.full_messages)
   end
 
   def balance
-    budget.balance + (credit - debit)
+    budget.amount - budget.balance + credit - debit
   end
 end
