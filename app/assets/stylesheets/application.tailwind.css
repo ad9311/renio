@@ -42,7 +42,7 @@
   }
 
   .links-container {
-    @apply mb-4 flex gap-1 items-center;
+    @apply flex gap-1 items-center title-bottom-margin;
   }
 
   .links-container a {
@@ -55,6 +55,10 @@
 
   .title {
     @apply text-xl font-bold text-slate-700;
+  }
+
+  .title-bottom-margin {
+    @apply mb-4;
   }
 
   .subtitle {
@@ -71,6 +75,50 @@
 
   .inner-card-hover {
     @apply hover:bg-sky-50 transition-colors;
+  }
+
+  .button {
+    @apply py-2 px-4 rounded cursor-pointer;
+  }
+
+  .button-primary {
+    @apply bg-sky-600 text-white hover:bg-sky-500 button;
+  }
+
+  .form label {
+    @apply block text-sm font-medium;
+  }
+
+  .form fieldset {
+    @apply mb-4;
+  }
+
+  .form .actions {
+    @apply pt-4 flex justify-end gap-2;
+  }
+
+  .form input[type="text"],
+  .form input[type="number"],
+  .form input[type="email"],
+  .form input[type="password"],
+  .form select {
+    @apply input;
+  }
+
+  .form textarea {
+    @apply h-16 resize-none input;
+  }
+
+  .form .submit {
+    @apply button-primary;
+  }
+
+  .form-errors {
+    @apply p-4 bg-rose-100 rounded title-bottom-margin;
+  }
+
+  .form-errors li {
+    @apply text-rose-500 text-sm;
   }
 }
 
@@ -93,5 +141,9 @@
 
   .negative-value {
     @apply text-rose-500 number;
+  }
+
+  .input {
+    @apply p-2 w-full border border-slate-300 rounded;
   }
 }
