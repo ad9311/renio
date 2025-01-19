@@ -1,3 +1,14 @@
 <h1>Budget</h1>
 <%= link_to "Edit", edit_budget_path(@budget.uid) %>
 <%= link_to "New Expense", new_budget_expense_path(@budget.uid) %>
+<p>Balance: <%= @budget.balance %></p>
+<ul>
+  <% @expenses.each do |expense| %>
+    <li class="flex gap-2">
+      <%= expense.description %>
+      <%= expense.amount %>
+      <%= expense.expense_category.name %>
+      <%= link_to "View", budget_expense_path(@budget.uid, expense.id) %>
+    </li>
+  <% end %>
+</ul>

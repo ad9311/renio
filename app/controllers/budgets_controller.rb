@@ -1,9 +1,13 @@
 class BudgetsController < ApplicationController
   before_action :budget, only: %i[show edit update]
 
-  def index; end
+  def index
+    @budgets = current_user.budgets.order(created_at: :desc).limit(12)
+  end
 
-  def show; end
+  def show
+    @expenses = budget.expenses.includes(:expense_category).order(created_at: :desc)
+  end
 
   def edit; end
 
