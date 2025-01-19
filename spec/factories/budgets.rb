@@ -23,7 +23,7 @@
 #
 FactoryBot.define do
   factory :budget do
-    wallet { nil }
+    association :wallet
     uid { nil }
     month { Time.zone.now.month }
     year { Time.zone.now.year }

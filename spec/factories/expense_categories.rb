@@ -15,6 +15,7 @@
 #
 FactoryBot.define do
   factory :expense_category do
-    name { "Test category" }
+    name { nil }
+    uid { nil }
   end
 end

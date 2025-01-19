@@ -22,8 +22,8 @@
 #
 FactoryBot.define do
   factory :expense do
-    expense_category { nil }
-    budget { nil }
+    association :budget
+    association :expense_category
     description { "Test description" }
     amount { "9.99" }
   end
