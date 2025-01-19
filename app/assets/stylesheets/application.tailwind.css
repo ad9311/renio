@@ -1,3 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Rubik', sans-serif;
+  }
+
+  hr {
+    @apply my-4 border-slate-300;
+  }
+
+  .number {
+    font-family: 'Sora', sans-serif;
+  }
+}
+
+@layer components {
+  .main-container {
+    @apply container mx-auto pt-6 px-4;
+  }
+
+  .navbar-container {
+    @apply bg-slate-100 border-b border-slate-200;
+  }
+
+  .navbar {
+    @apply container mx-auto py-2 px-4 flex items-center;
+  }
+
+  .link {
+    @apply text-sky-700 hover:text-sky-600 link-underline link-size;
+  }
+
+  .link-danger {
+    @apply text-rose-700 hover:text-rose-600 link-underline link-size;
+  }
+
+  .links-container {
+    @apply mb-4 flex gap-1 items-center;
+  }
+
+  .links-container a {
+    @apply link;
+  }
+
+  .links-container span {
+    @apply text-slate-400 text-xs;
+  }
+
+  .title {
+    @apply text-xl font-bold text-slate-700;
+  }
+
+  .subtitle {
+    @apply text-lg font-medium text-slate-600;
+  }
+
+  .card {
+    @apply bg-slate-100 border border-slate-200 rounded p-4;
+  }
+}
+
+@layer utilities {
+  .link-underline {
+    @apply hover:underline underline-offset-2;
+  }
+
+  .link-size {
+    @apply text-sm;
+  }
+
+  .positive-value {
+    @apply text-green-500 number;
+  }
+
+  .zero-value {
+    @apply text-slate-500 number;
+  }
+
+  .negative-value {
+    @apply text-rose-500 number;
+  }
+}

@@ -1,0 +1,18 @@
+<% if value.zero? %>
+  <span class="zero-value">
+    <%= number_to_currency(value) %>
+  </span>
+<% end %>
+
+<% if value.positive? %>
+  <span class="positive-value">
+    <%= number_to_currency(value) %>
+  </span>
+<% end %>
+
+<% if value.negative? %>
+  <span class="negative-value">
+    <%= number_to_currency(value) %>
+  </span>
+<% end %>
+

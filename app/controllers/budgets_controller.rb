@@ -1,8 +1,9 @@
 class BudgetsController < ApplicationController
   before_action :budget, only: %i[show edit update]
+  before_action :wallet, only: :index
 
   def index
-    @budgets = current_user.budgets.order(created_at: :desc).limit(12)
+    @budgets = wallet.budgets.order(created_at: :desc).limit(12)
   end
 
   def show
@@ -27,5 +28,9 @@ class BudgetsController < ApplicationController
 
   def budget_params
     params.require(:budget).permit(:amount)
+  end
+
+  def wallet
+    @wallet ||= current_user.wallet
   end
 end
