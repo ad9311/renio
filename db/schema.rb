@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_18_165313) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_19_204633) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "budgets", force: :cascade do |t|
     t.bigint "wallet_id", null: false
     t.decimal "amount", precision: 10, scale: 2, default: "0.0", null: false
-    t.decimal "balance", precision: 10, scale: 2, default: "0.0", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "month", null: false
     t.integer "year", null: false
     t.string "uid", null: false
+    t.decimal "total_expenses", precision: 10, scale: 2, default: "0.0", null: false
     t.index ["uid"], name: "index_budgets_on_uid", unique: true
     t.index ["wallet_id"], name: "index_budgets_on_wallet_id"
   end

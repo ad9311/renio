@@ -2,15 +2,15 @@
 #
 # Table name: budgets
 #
-#  id         :bigint           not null, primary key
-#  amount     :decimal(10, 2)   default(0.0), not null
-#  balance    :decimal(10, 2)   default(0.0), not null
-#  month      :integer          not null
-#  uid        :string           not null
-#  year       :integer          not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  wallet_id  :bigint           not null
+#  id             :bigint           not null, primary key
+#  amount         :decimal(10, 2)   default(0.0), not null
+#  month          :integer          not null
+#  total_expenses :decimal(10, 2)   default(0.0), not null
+#  uid            :string           not null
+#  year           :integer          not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  wallet_id      :bigint           not null
 #
 # Indexes
 #
@@ -28,6 +28,6 @@ FactoryBot.define do
     month { Time.zone.now.month }
     year { Time.zone.now.year }
     amount { "0.0" }
-    balance { "0.0" }
+    total_expenses { "0.0" }
   end
 end

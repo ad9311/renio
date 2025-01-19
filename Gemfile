@@ -60,6 +60,9 @@ group :development, :test do
 
   # Faker for testing [https://github.com/faker-ruby/faker]
   gem "faker", "~> 3.5"
+
+  # Pry for debugging [https://github.com/pry/pry]
+  gem "pry", "~> 0.15.2"
 end
 
 group :development do

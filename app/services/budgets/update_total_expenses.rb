@@ -1,4 +1,4 @@
-class Budgets::UpdateBalance
+class Budgets::UpdateTotalExpenses
   include Callable
 
   attr_reader :budget, :credit, :debit, :params
@@ -13,17 +13,17 @@ class Budgets::UpdateBalance
   end
 
   def call
-    update_budget_balance
+    update_budget_total_expenses
   end
 
   private
 
-  def update_budget_balance
-    result = budget.update(balance:)
+  def update_budget_total_expenses
+    result = budget.update(total_expenses:)
     Result.new(result, budget.errors.full_messages)
   end
 
-  def balance
-    budget.amount - budget.balance + credit - debit
+  def total_expenses
+    budget.total_expenses + credit - debit
   end
 end

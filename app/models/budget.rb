@@ -2,15 +2,15 @@
 #
 # Table name: budgets
 #
-#  id         :bigint           not null, primary key
-#  amount     :decimal(10, 2)   default(0.0), not null
-#  balance    :decimal(10, 2)   default(0.0), not null
-#  month      :integer          not null
-#  uid        :string           not null
-#  year       :integer          not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  wallet_id  :bigint           not null
+#  id             :bigint           not null, primary key
+#  amount         :decimal(10, 2)   default(0.0), not null
+#  month          :integer          not null
+#  total_expenses :decimal(10, 2)   default(0.0), not null
+#  uid            :string           not null
+#  year           :integer          not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  wallet_id      :bigint           not null
 #
 # Indexes
 #
@@ -26,13 +26,17 @@ class Budget < ApplicationRecord
 
   has_many :expenses, dependent: :destroy
 
-  validates :amount, :balance, numericality: { greater_than_or_equal_to: 0 }, on: :create
+  validates :amount, :total_expenses, numericality: { greater_than_or_equal_to: 0 }, on: :create
   validates :amount, numericality: { greater_than: 0 }, on: :update
   validates :uid, presence: true, uniqueness: true
 
   before_validation :set_uid, on: :create
 
   def to_param; uid end
+
+  def balance
+    amount - total_expenses
+  end
 
   private
 
