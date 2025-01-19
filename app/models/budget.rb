@@ -38,6 +38,10 @@ class Budget < ApplicationRecord
     amount - total_expenses
   end
 
+  def date
+    "#{month}/#{year}"
+  end
+
   private
 
   def set_uid

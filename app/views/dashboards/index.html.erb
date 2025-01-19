@@ -3,7 +3,7 @@
     <h2 class="title">Wallet</h2>
     <hr>
     <div>
-      <h3 class="subtitle">Current budget</h3>
+      <h3 class="subtitle">Current budget <%= @summary[:current_budget].date =%></h3>
       <div class="links-container">
         <%= link_to "Current budget", budget_path(@summary[:current_budget].uid) %>
         <span>|</span>

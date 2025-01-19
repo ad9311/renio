@@ -8,6 +8,7 @@
 @layer base {
   body {
     font-family: 'Rubik', sans-serif;
+    @apply text-slate-600;
   }
 
   hr {
@@ -57,11 +58,19 @@
   }
 
   .subtitle {
-    @apply text-lg font-medium text-slate-600;
+    @apply text-lg font-medium;
   }
 
   .card {
     @apply bg-slate-100 border border-slate-200 rounded p-4;
+  }
+
+  .inner-card {
+    @apply bg-white border border-slate-300 rounded py-1 px-2;
+  }
+
+  .inner-card-hover {
+    @apply hover:bg-sky-50 transition-colors;
   }
 }
 
