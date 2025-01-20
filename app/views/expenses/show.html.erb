@@ -1,3 +1,17 @@
-<h1>Expense</h1>
-<%= link_to "Edit", edit_budget_expense_path(@budget.uid, @expense.id) %>
-<%= button_to "Delete", budget_expense_path(@budget.uid, @expense.id), method: :delete %>
+<section class="card">
+  <h2 class="title">Expense</h2>
+  <div class="links-container flex items-center justify-between">
+    <%= link_to "Edit", edit_budget_expense_path(@budget.uid, @expense.id) %>
+    <%= button_to "Delete", budget_expense_path(@budget.uid, @expense.id), method: :delete, class: "link-danger" %>
+  </div>
+  <hr>
+  <div class="inner-card">
+    <div class="mb-2">
+      <p class="text-xs text-slate-500 italic"><%= @expense.expense_category.name %></p>
+    </div>
+    <div class="flex justify-between items-center text-sm">
+      <%= @expense.description %>
+      <%= render "shared/expense", value: @expense.amount %>
+    </div>
+  </div>
+</section>

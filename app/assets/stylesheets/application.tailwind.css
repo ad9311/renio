@@ -46,7 +46,7 @@
   }
 
   .links-container a {
-    @apply link;
+    @apply flex items-center link;
   }
 
   .links-container span {

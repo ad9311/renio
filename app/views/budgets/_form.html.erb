@@ -1,5 +1,12 @@
-<%= form_with model: @budget, url: budget_path(@budget.uid), method: :patch do |form| %>
-  <%= form.label :amount %>
-  <%= form.number_field :amount, min: 1, step: 0.01, placeholder: "100.00" %>
-  <%= form.submit "Save" %>
-<% end %>
+<div>
+  <%= render "shared/form_errors", model: @budget %>
+  <%= form_with model: @budget, url: budget_path(@budget.uid), method: :patch, class: "form" do |form| %>
+    <fieldset>
+      <%= form.label :amount %>
+      <%= form.number_field :amount, min: 0, step: 0.01, placeholder: "100.00" %>
+    </fieldset>
+    <div class="actions">
+      <%= form.submit "Save", class: "submit" %>
+    </div>
+  <% end %>
+</div>
