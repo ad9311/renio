@@ -1,14 +1,14 @@
 EnableDefaultLinters: true
 exclude:
-  - '**/vendor/**/*'
-  - '**/node_modules/**/*'
+  - "**/vendor/**/*"
+  - "**/node_modules/**/*"
 linters:
   ErbSafety:
     enabled: true
     # better_html_config: .better-html.yml
   RightTrim:
     enabled: true
-    enforced_style: '='
+    enforced_style: "="
   Layout/TrailingEmptyLines:
     EnforcedStyle: final_blank_line
   Rubocop:
