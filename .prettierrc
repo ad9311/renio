@@ -1,0 +1,29 @@
+{
+  "singleQuote": true,
+  "semi": true,
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "printWidth": 100,
+  "bracketSameLine": true,
+  "arrowParens": "avoid",
+  "overrides": [
+    {
+      "files": "*.erb",
+      "options": {
+        "parser": "html"
+      }
+    },
+    {
+      "files": "erb",
+      "options": {
+        "parser": "html"
+      }
+    },
+    {
+      "files": "*.html.erb",
+      "options": {
+        "parser": "html"
+      }
+    }
+  ]
+}
