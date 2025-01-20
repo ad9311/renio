@@ -3,7 +3,12 @@
   "private": true,
   "scripts": {
     "build": "bun bun.config.js",
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify",
+    "lint": "bunx eslint .",
+    "lint:fix": "bunx eslint . --fix",
+    "format": "prettier --write .",
+    "lint:css": "bunx stylelint '**/*.{css,scss}'",
+    "lint:css:fix": "bunx stylelint '**/*.{css,scss}' --fix"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
