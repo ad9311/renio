@@ -11,6 +11,8 @@ class ExpensesController < ApplicationController
   def edit; end
 
   def create
+    redirect_to_budget("Budget needs to have an amount") if @budget.amount.zero?
+
     @expense = budget.expenses.new(expense_params)
     if @expense.save
       redirect_to_budget("Expense created successfully")
