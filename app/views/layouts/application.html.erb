@@ -20,10 +20,7 @@
   </head>
   <body>
     <%= render "shared/navbar" %>
-    <div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
+    <%= render "shared/flash" %>
     <main class="main-container">
       <%= yield %>
     </main>

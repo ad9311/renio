@@ -57,10 +57,6 @@
     @apply text-xl font-bold text-slate-700;
   }
 
-  .title-bottom-margin {
-    @apply mb-4;
-  }
-
   .subtitle {
     @apply text-lg font-medium;
   }
@@ -123,6 +119,10 @@
 }
 
 @layer utilities {
+  .title-bottom-margin {
+    @apply mb-4;
+  }
+
   .link-underline {
     @apply hover:underline underline-offset-2;
   }
@@ -145,5 +145,33 @@
 
   .input {
     @apply p-2 w-full border border-slate-300 rounded;
+  }
+
+  .flash {
+    @apply mt-4 mx-4 py-2 px-4 rounded font-medium;
+  }
+
+  .notice {
+    @apply container mx-auto;
+  }
+
+  .notice div {
+    @apply bg-green-100 flash;
+  }
+
+  .notice p {
+    @apply text-green-700 text-sm;
+  }
+
+  .alert {
+    @apply container mx-auto;
+  }
+
+  .alert div {
+    @apply bg-rose-100 flash;
+  }
+
+  .alert p {
+    @apply text-rose-700 text-sm;
   }
 }
