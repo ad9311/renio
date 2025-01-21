@@ -3,7 +3,9 @@
   <%= form_with model: [@budget, @expense], class: "form" do |form| %>
     <fieldset>
       <%= form.label :category %>
-      <%= form.select :expense_category_id, ExpenseCategory.all.map { |category| [category.name, category.id] }, { prompt: "Select a category" } %>
+      <%= form.select :expense_category_id,
+                  ExpenseCategory.all.map { |category| [category.name, category.id] },
+                  { prompt: "Select a category" } %>
     </fieldset>
     <fieldset>
       <%= form.label :description %>

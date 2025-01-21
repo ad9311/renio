@@ -3,6 +3,7 @@
   <% if @budget.amount.positive? %>
     <%= render "form" %>
   <% else %>
-    <p>Plase add an amount to the budget: <%= link_to @budget.date, edit_budget_path(@budget), class: "link" %></p>
+    <p>Plase add an amount to the budget:
+      <%= link_to @budget.date, edit_budget_path(@budget), class: "link" %></p>
   <% end %>
 </div>

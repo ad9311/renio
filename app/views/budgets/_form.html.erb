@@ -1,6 +1,6 @@
 <div>
   <%= render "shared/form_errors", model: @budget %>
-  <%= form_with model: @budget, url: budget_path(@budget.uid), method: :patch, class: "form" do |form| %>
+  <%= form_with model: @budget, url: budget_path(@budget), method: :patch, class: "form" do |form| %>
     <fieldset>
       <%= form.label :amount %>
       <%= form.number_field :amount, min: 0, step: 0.01, placeholder: "100.00" %>

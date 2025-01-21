@@ -1,8 +1,9 @@
 <div class="flex flex-col gap-4">
   <section class="card">
-    <h2 class="title">Budget <%= @budget.date %></h2>
+    <h2 class="title">Budget
+      <%= @budget.date %></h2>
     <div class="links-container">
-      <%= link_to "Edit", edit_budget_path(@budget.uid), class: "link" %>
+      <%= link_to "Edit", edit_budget_path(@budget), class: "link" %>
     </div>
     <hr>
     <div class="grid grid-cols-2">
@@ -21,13 +22,13 @@
   <section class="card">
     <h2 class="title">Expenses</h2>
     <div class="links-container">
-      <%= link_to "New expense", new_budget_expense_path(@budget.uid), class: "link" %>
+      <%= link_to "New expense", new_budget_expense_path(@budget), class: "link" %>
     </div>
     <hr>
     <ul class="flex flex-col gap-2">
-      <% @budget.expenses.each do |expense| %>
+      <% @expenses.each do |expense| %>
         <li class="inner-card inner-card-hover leading-none">
-          <%= link_to budget_expense_path(@budget.uid, expense.id) do %>
+          <%= link_to budget_expense_path(@budget, expense) do %>
             <div class="mb-2">
               <p class="text-xs text-slate-500 italic"><%= expense.expense_category.name %></p>
             </div>

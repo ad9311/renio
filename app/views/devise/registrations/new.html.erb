@@ -9,8 +9,9 @@
     <fieldset>
       <%= f.label :password %>
       <% if @minimum_password_length %>
-      <em class="text-xs">(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
+        <em class="text-xs">(<%= @minimum_password_length %>
+          characters minimum)</em>
+      <% end %><br/>
       <%= f.password_field :password, autocomplete: "new-password" %>
     </fieldset>
     <fieldset>

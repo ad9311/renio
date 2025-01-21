@@ -1,8 +1,11 @@
 <section class="card">
   <h2 class="title">Expense</h2>
   <div class="links-container flex items-center justify-between">
-    <%= link_to "Edit", edit_budget_expense_path(@budget.uid, @expense.id) %>
-    <%= button_to "Delete", budget_expense_path(@budget.uid, @expense.id), method: :delete, class: "link-danger" %>
+    <%= link_to "Edit", edit_budget_expense_path(@budget, @expense) %>
+    <%= button_to "Delete",
+    budget_expense_path(@budget, @expense),
+    method: :delete,
+    class: "link-danger" %>
   </div>
   <hr>
   <div class="inner-card">
