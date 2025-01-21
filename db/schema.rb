@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_21_174213) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_21_230224) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "account_receivables", force: :cascade do |t|
     t.bigint "wallet_id", null: false
     t.string "debtor", null: false
-    t.decimal "balance", precision: 10, scale: 2, default: "0.0", null: false
+    t.decimal "total_receivables", precision: 10, scale: 2, default: "0.0", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

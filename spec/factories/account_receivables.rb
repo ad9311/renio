@@ -2,13 +2,13 @@
 #
 # Table name: account_receivables
 #
-#  id         :bigint           not null, primary key
-#  balance    :decimal(10, 2)   default(0.0), not null
-#  debtor     :string           not null
-#  status     :integer          default("pending"), not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  wallet_id  :bigint           not null
+#  id                :bigint           not null, primary key
+#  debtor            :string           not null
+#  status            :integer          default("pending"), not null
+#  total_receivables :decimal(10, 2)   default(0.0), not null
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  wallet_id         :bigint           not null
 #
 # Indexes
 #
@@ -22,7 +22,7 @@ FactoryBot.define do
   factory :account_receivable do
     association :wallet
     debtor { Faker::Name.name }
-    balance { "9.99" }
+    total_receivables { "0" }
     status { :pending }
   end
 end
