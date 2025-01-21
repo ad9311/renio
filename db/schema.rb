@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_19_204633) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_21_015657) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "account_receivables", force: :cascade do |t|
+    t.bigint "wallet_id", null: false
+    t.string "debtor", null: false
+    t.decimal "balance", precision: 10, scale: 2, default: "0.0", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["wallet_id"], name: "index_account_receivables_on_wallet_id"
+  end
 
   create_table "budgets", force: :cascade do |t|
     t.bigint "wallet_id", null: false
@@ -66,6 +76,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_19_204633) do
     t.index ["user_id"], name: "index_wallets_on_user_id"
   end
 
+  add_foreign_key "account_receivables", "wallets"
   add_foreign_key "budgets", "wallets"
   add_foreign_key "expenses", "budgets"
   add_foreign_key "expenses", "expense_categories"
