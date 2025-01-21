@@ -1,0 +1,9 @@
+<%= form_with model: @account_receivable, class: "form" do |f| %>
+  <fieldset>
+    <%= f.label :debtor %>
+    <%= f.text_field :debtor %>
+  </fieldset>
+  <fieldset class="actions">
+    <%= f.submit "Save", class: "submit" %>
+  </fieldset>
+<% end %>

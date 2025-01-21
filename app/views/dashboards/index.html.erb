@@ -2,22 +2,8 @@
   <section class="card">
     <h2 class="title">Wallet</h2>
     <hr>
-    <div>
-      <h3 class="subtitle">Current budget
-        <%= @summary[:current_budget].date %></h3>
-      <div class="links-container">
-        <%= link_to "Current budget", budget_path(@summary[:current_budget].uid) %>
-        <span>|</span>
-        <%= link_to "Budgets", budgets_path %>
-      </div>
-      <div class="grid grid-cols-2">
-        <p class="text-slate-500">Balance:</p>
-        <p><%= render "shared/balance", value: @summary[:current_budget].balance %></p>
-      </div>
-      <div class="grid grid-cols-2">
-        <p class="text-slate-500">Last expense:</p>
-        <p><%= render "shared/expense", value: @summary[:last_expense]&.amount || 0 %></p>
-      </div>
-    </div>
+    <%= render "dashboards/current_budget" %>
+    <hr>
+    <%= render "dashboards/last_account_receivable" %>
   </section>
 </div>

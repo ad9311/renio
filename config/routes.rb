@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :budgets, param: :uid, except: %i[new destroy] do
     resources :expenses, except: :index
-    resources :account_receivables, only: :index
   end
+
+  resources :account_receivables
 end

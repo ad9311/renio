@@ -8,6 +8,10 @@ describe Wallets::Summary, type: :service do
   let(:month) { Time.zone.now.month }
   let(:year) { Time.zone.now.year }
 
+  before do
+    wallet
+  end
+
   context "when there is a current budget" do
     before { create(:budget, wallet:) }
 
@@ -30,11 +34,27 @@ describe Wallets::Summary, type: :service do
 
   context "when there is a last expense" do
     before do
-      wallet
+      create(:budget, wallet:, amount: 100)
+      create(:expense_category, name: "Test", uid: "test")
+      create(:expense, budget: wallet.budgets.where(month:, year:).first, expense_category: ExpenseCategory.last)
     end
 
     it "returns the last expense" do
-      expect(call.summary[:last_expense]).to eq(wallet.budgets.where(month:, year:).first.expenses.last)
+      expect(call.summary[:last_expense]).to eq(Expense.last)
+    end
+  end
+
+  context "when there is an account receivable" do
+    before { create(:account_receivable, wallet:) }
+
+    it "returns the account receivable" do
+      expect(call.summary[:last_account_receivable]).to eq(AccountReceivable.last)
+    end
+  end
+
+  context "when there is no account receivable" do
+    it "returns nil" do
+      expect(call.summary[:last_account_receivable]).to be_nil
     end
   end
 

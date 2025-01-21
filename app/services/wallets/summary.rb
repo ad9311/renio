@@ -15,7 +15,8 @@ class Wallets::Summary
 
     Result.new({
       current_budget: current_budget,
-      last_expense: current_budget.expenses.last
+      last_expense: current_budget.expenses.last,
+      last_account_receivable: wallet.account_receivables.last
     })
   end
 

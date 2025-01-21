@@ -24,5 +24,5 @@ class AccountReceivable < ApplicationRecord
   validates :balance, numericality: { greater_than_or_equal_to: 0 }
   validates :debtor, presence: true
 
-  enum status: { pending: 0, paid: 1, canceled: 2 }
+  enum :status, { pending: 0, paid: 1, canceled: 2 }
 end
