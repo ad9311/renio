@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
-  root "dashboards#index"
+  root to: redirect("/dashboard")
 
   devise_for :users
 
@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     resources :expenses, except: :index
   end
 
-  resources :account_receivables
+  resources :account_receivables do
+    resources :receivables, except: :index
+  end
 end
