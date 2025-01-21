@@ -147,28 +147,24 @@
     @apply p-2 w-full border border-slate-300 rounded;
   }
 
-  .flash {
+  .flash-base {
     @apply mt-4 mx-4 py-2 px-4 rounded font-medium;
   }
 
-  .notice {
+  .flash {
     @apply container mx-auto;
   }
 
-  .notice div {
-    @apply bg-green-100 flash;
+  .flash .notice {
+    @apply bg-green-100 flash-base;
   }
 
   .notice p {
     @apply text-green-700 text-sm;
   }
 
-  .alert {
-    @apply container mx-auto;
-  }
-
-  .alert div {
-    @apply bg-rose-100 flash;
+  .flash .alert {
+    @apply bg-rose-100 flash-base;
   }
 
   .alert p {
