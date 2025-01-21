@@ -1,1 +1,25 @@
-<h1>Budgets</h1>
+<section class="card">
+  <h1 class="title">Budgets</h1>
+  <hr>
+  <ul class="flex flex-col gap-2">
+    <% @budgets.each do |budget| %>
+      <li class="inner-card inner-card-hover leading-none">
+        <%= link_to budget_path(budget.uid) do %>
+          <div class="mb-2">
+            <p class="text-xs text-slate-500 italic"><%= budget.date %></p>
+          </div>
+          <div class="text-sm">
+            <div class="grid grid-cols-2">
+              <p class="text-slate-500">Balance:</p>
+              <p><%= render "shared/balance", value: budget.balance %></p>
+            </div>
+            <div class="grid grid-cols-2">
+              <p class="text-slate-500">Total expenses:</p>
+              <p><%= render "shared/expense", value: budget.total_expenses %></p>
+            </div>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</section>

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  get "dashboard", to: "dashboards#index", as: :dashboard
+
   resources :budgets, param: :uid, except: %i[new destroy] do
     resources :expenses, except: :index
   end

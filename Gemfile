@@ -72,8 +72,6 @@ group :development do
   # Add annotations to your models [https://github.com/drwl/annotaterb]
   gem "annotaterb", "~> 4.13"
 
-  # Lint ERB templates [https://github.com/Shopify/erb-lint]
-  gem "erb_lint", "~> 0.8.0"
-
+  # Dockerize your Rails application [https://github.com/rails/dockerfile-rails]
   gem "dockerfile-rails", ">= 1.7"
 end
