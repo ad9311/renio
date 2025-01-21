@@ -9,7 +9,8 @@
     "format": "prettier --write .",
     "lint:css": "bunx stylelint '**/*.{css,scss}'",
     "lint:css:fix": "bunx stylelint '**/*.{css,scss}' --fix",
-    "lint:erb": "erb-format app/views/**/*.html.erb --write"
+    "lint:erb": "erb-format app/views/**/*.html.erb",
+    "lint:erb:fix": "erb-format app/views/**/*.html.erb --write"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
@@ -19,9 +20,11 @@
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
+    "@eslint/js": "^9.18.0",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
+    "globals": "^15.14.0",
     "prettier": "^3.4.2",
     "stylelint-config-tailwindcss": "^0.0.7"
   }
