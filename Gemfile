@@ -74,4 +74,6 @@ group :development do
 
   # Lint ERB templates [https://github.com/Shopify/erb-lint]
   gem "erb_lint", "~> 0.8.0"
+
+  gem "dockerfile-rails", ">= 1.7"
 end
