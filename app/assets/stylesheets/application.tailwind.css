@@ -69,8 +69,24 @@
     @apply bg-white border border-slate-300 rounded py-1 px-2;
   }
 
+  .inner-card-field {
+    @apply text-slate-500;
+  }
+
+  .inner-card-top-label {
+    @apply text-xs italic inner-card-field;
+  }
+
   .inner-card-hover {
     @apply hover:bg-sky-50 transition-colors;
+  }
+
+  .description-row {
+    @apply grid grid-cols-2;
+  }
+
+  .description-field {
+    @apply inner-card-field text-sm;
   }
 
   .button {

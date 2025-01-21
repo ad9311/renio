@@ -6,16 +6,16 @@
       <%= link_to "Edit", edit_budget_path(@budget), class: "link" %>
     </div>
     <hr>
-    <div class="grid grid-cols-2">
-      <p class="text-slate-500 text-sm">Amount:</p>
+    <div class="description-row">
+      <p class="description-field">Amount:</p>
       <p><%= render "shared/balance", value: @budget.amount %></p>
     </div>
-    <div class="grid grid-cols-2">
-      <p class="text-slate-500 text-sm">Balance:</p>
+    <div class="description-row">
+      <p class="description-field">Balance:</p>
       <p><%= render "shared/balance", value: @budget.balance %></p>
     </div>
-    <div class="grid grid-cols-2">
-      <p class="text-slate-500 text-sm">Total expenses:</p>
+    <div class="description-row">
+      <p class="description-field">Total expenses:</p>
       <p><%= render "shared/expense", value: @budget.total_expenses %></p>
     </div>
   </section>
@@ -25,20 +25,6 @@
       <%= link_to "New expense", new_budget_expense_path(@budget), class: "link" %>
     </div>
     <hr>
-    <ul class="flex flex-col gap-2">
-      <% @expenses.each do |expense| %>
-        <li class="inner-card inner-card-hover leading-none">
-          <%= link_to budget_expense_path(@budget, expense) do %>
-            <div class="mb-2">
-              <p class="text-xs text-slate-500 italic"><%= expense.expense_category.name %></p>
-            </div>
-            <div class="flex justify-between items-center text-sm">
-              <%= expense.description %>
-              <%= render "shared/expense", value: expense.amount %>
-            </div>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+    <%= render "expenses" %>
   </section>
 </div>

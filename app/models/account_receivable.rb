@@ -22,7 +22,7 @@ class AccountReceivable < ApplicationRecord
   belongs_to :wallet
 
   validates :balance, numericality: { greater_than_or_equal_to: 0 }
-  validates :debtor, presence: true
+  validates :debtor, presence: true, length: { maximum: 20 }
 
   enum :status, { pending: 0, paid: 1, canceled: 2 }
 end

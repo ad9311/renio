@@ -3,26 +3,26 @@
   <div class="links-container">
     <% if @summary[:last_account_receivable].present? %>
       <%= link_to "View", account_receivable_path(@summary[:last_account_receivable]), class: "link" %>
+      <span>|</span>
     <% end %>
-    <span>|</span>
     <%= link_to "New", new_account_receivable_path %>
     <span>|</span>
     <%= link_to "List", account_receivables_path %>
   </div>
   <% if @summary[:last_account_receivable].present? %>
-    <div class="grid grid-cols-2">
-      <p class="text-slate-500">Balance:</p>
+    <div class="description-row">
+      <p class="inner-card-field">Balance:</p>
       <p><%= render "shared/balance", value: @summary[:last_account_receivable].balance %></p>
     </div>
-    <div class="grid grid-cols-2">
-      <p class="text-slate-500">Debtor:</p>
+    <div class="description-row">
+      <p class="inner-card-field">Debtor:</p>
       <p><%= @summary[:last_account_receivable].debtor %></p>
     </div>
-    <div class="grid grid-cols-2">
-      <p class="text-slate-500">Status:</p>
+    <div class="description-row">
+      <p class="inner-card-field">Status:</p>
       <p><%= @summary[:last_account_receivable].status %></p>
     </div>
   <% else %>
-    <p class="text-slate-500">No account receivable</p>
+    <p class="inner-card-field">No account receivable</p>
   <% end %>
 </div>

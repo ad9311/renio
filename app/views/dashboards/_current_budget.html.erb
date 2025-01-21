@@ -6,12 +6,12 @@
     <span>|</span>
     <%= link_to "List", budgets_path %>
   </div>
-  <div class="grid grid-cols-2">
-    <p class="text-slate-500">Balance:</p>
+  <div class="description-row">
+    <p class="inner-card-field">Balance:</p>
     <p><%= render "shared/balance", value: @summary[:current_budget].balance %></p>
   </div>
-  <div class="grid grid-cols-2">
-    <p class="text-slate-500">Last expense:</p>
+  <div class="description-row">
+    <p class="inner-card-field">Last expense:</p>
     <p><%= render "shared/expense", value: @summary[:last_expense]&.amount || 0 %></p>
   </div>
 </div>
