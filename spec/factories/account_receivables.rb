@@ -5,7 +5,7 @@
 #  id         :bigint           not null, primary key
 #  balance    :decimal(10, 2)   default(0.0), not null
 #  debtor     :string           not null
-#  status     :integer          default(0), not null
+#  status     :integer          default("pending"), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  wallet_id  :bigint           not null
