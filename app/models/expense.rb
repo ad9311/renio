@@ -25,7 +25,7 @@ class Expense < ApplicationRecord
   belongs_to :budget
 
   validates :amount, presence: true, numericality: { greater_than: 0 }
-  validates :description, presence: true
+  validates :description, presence: true, length: { maximum: 50 }
 
   after_create :update_budget_total_expenses_on_create
   after_update :update_budget_total_expenses_on_update

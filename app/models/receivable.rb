@@ -21,5 +21,34 @@ class Receivable < ApplicationRecord
   belongs_to :account_receivable
 
   validates :amount, presence: true, numericality: { greater_than: 0 }
-  validates :description, presence: true
+  validates :description, presence: true, length: { maximum: 50 }
+
+  after_create :update_account_total_receivables_on_create
+  after_update :update_account_total_receivables_on_update
+  after_destroy :update_account_total_receivables_on_destroy
+
+  private
+
+  def update_account_total_receivables_on_create
+    params = { credit: amount, debit: 0 }
+    update_account_total_receivables(params:)
+  end
+
+  def update_account_total_receivables_on_update
+    if previous_changes.include?(:amount)
+      old_amount, new_amount = previous_changes[:amount]
+      params = { credit: new_amount, debit: old_amount }
+      update_account_total_receivables(params:)
+    end
+  end
+
+  def update_account_total_receivables_on_destroy
+    params = { credit: 0, debit: amount }
+    update_account_total_receivables(params:)
+  end
+
+  def update_account_total_receivables(params:)
+    result = AccountReceivables::UpdateTotalReceivables.call(account_receivable:, params:)
+    raise "Failed to update account total receivables: #{result.inspect}" unless result.success?
+  end
 end

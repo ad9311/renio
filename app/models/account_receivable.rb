@@ -29,6 +29,6 @@ class AccountReceivable < ApplicationRecord
   enum :status, { pending: 0, paid: 1, canceled: 2 }
 
   def balance
-    0
+    total_receivables - 0
   end
 end

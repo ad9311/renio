@@ -49,6 +49,6 @@ class ExpensesController < ApplicationController
   end
 
   def redirect_to_budget(notice)
-    redirect_to budget_path(budget.uid), notice:
+    redirect_to budget_path(budget), notice:
   end
 end
