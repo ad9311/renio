@@ -22,7 +22,6 @@ FactoryBot.define do
   factory :account_receivable do
     association :wallet
     debtor { Faker::Name.name }
-    total_receivables { "0" }
     status { :pending }
   end
 end

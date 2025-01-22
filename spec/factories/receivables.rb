@@ -19,9 +19,8 @@
 #
 FactoryBot.define do
   factory :receivable do
-    association account_receivable
-    description { "Test description" }
-    amount { "9.99" }
-    status { 1 }
+    association :account_receivable
+    description { "Test" }
+    amount { "9.99 " }
   end
 end
