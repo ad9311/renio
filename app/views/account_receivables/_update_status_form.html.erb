@@ -1,0 +1,6 @@
+<%= form_with url: account_receivable_update_status_path(@account_receivable), method: :patch, class: "form" do |f| %>
+  <p>Cancel this account received</p>
+  <fieldset class="actions">
+    <%= f.submit "Cancel", class: "submit" %>
+  </fieldset>
+<% end %>

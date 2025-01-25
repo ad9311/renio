@@ -3,16 +3,22 @@ Rails.application.routes.draw do
 
   root to: redirect("/dashboard")
 
+  # Devise
   devise_for :users
 
+  # Dashboard
   get "dashboard", to: "dashboards#index", as: :dashboard
 
+  # Budgets
   resources :budgets, param: :uid, except: %i[new destroy] do
     resources :expenses, except: :index
   end
 
+  # Accounts receivable
   resources :account_receivables do
     resources :receivables, except: :index
     resources :payments, except: :index
   end
+
+  patch "account_receivables/:id/update_status", to: "account_receivables#update_status", as: :account_receivable_update_status
 end
