@@ -8,6 +8,7 @@ class AccountReceivablesController < ApplicationController
 
   def show
     @receivables = account_receivable.receivables.order(created_at: :desc)
+    @payments = account_receivable.payments.order(created_at: :desc)
   end
 
   def new

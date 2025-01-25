@@ -1,0 +1,14 @@
+<%= render "shared/form_errors", model: @payment %>
+<%= form_with model: [@account_receivable, @payment], class: "form" do |form| %>
+  <fieldset>
+    <%= form.label :date_received %>
+    <%= form.date_field :date_received %>
+  </fieldset>
+  <fieldset>
+    <%= form.label :amount %>
+    <%= form.number_field :amount, min: 0, step: 0.01, placeholder: "100.00" %>
+  </fieldset>
+  <div class="actions">
+    <%= form.submit "Save", class: "submit" %>
+  </div>
+<% end %>

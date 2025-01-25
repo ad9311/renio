@@ -4,6 +4,7 @@
 #
 #  id                    :bigint           not null, primary key
 #  amount                :decimal(10, 2)   not null
+#  date_received         :date             not null
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #  account_receivable_id :bigint           not null
@@ -20,4 +21,5 @@ class Payment < ApplicationRecord
   belongs_to :account_receivable
 
   validates :amount, presence: true, numericality: { greater_than: 0 }
+  validates :date_received, presence: true
 end

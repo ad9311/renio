@@ -1,8 +1,12 @@
 <div class="flex flex-col gap-4">
   <section class="card">
     <h2 class="title">Account receivable</h2>
-    <div class="links-container">
+    <div class="links-container flex items-center justify-between">
       <%= link_to "Edit", edit_account_receivable_path(@account_receivable), class: "link" %>
+      <%= button_to "Delete",
+      account_receivable_path(@account_receivable),
+      method: :delete,
+      class: "link-danger" %>
     </div>
     <hr>
     <div class="description-row">
@@ -21,11 +25,21 @@
   <section class="card">
     <h2 class="title">Receivables</h2>
     <div class="links-container">
-      <%= link_to "New receivable",
+      <%= link_to "New",
       new_account_receivable_receivable_path(@account_receivable),
       class: "link" %>
     </div>
     <hr>
     <%= render "receivables" %>
+  </section>
+  <section class="card">
+    <h2 class="title">Payments</h2>
+    <div class="links-container">
+      <%= link_to "New",
+      new_account_receivable_payment_path(@account_receivable),
+      class: "link" %>
+    </div>
+    <hr>
+    <%= render "payments" %>
   </section>
 </div>

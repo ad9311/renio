@@ -13,5 +13,6 @@ Rails.application.routes.draw do
 
   resources :account_receivables do
     resources :receivables, except: :index
+    resources :payments, except: :index
   end
 end

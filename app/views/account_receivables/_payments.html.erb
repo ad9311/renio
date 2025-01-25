@@ -1,0 +1,12 @@
+<ul class="flex flex-col gap-2">
+  <% @payments.each do |payment| %>
+    <li class="inner-card inner-card-hover leading-none">
+      <%= link_to account_receivable_payment_path(@account_receivable, payment) do %>
+        <div class="flex justify-between items-center text-sm">
+          <span><%= payment.date_received %></span>
+          <%= render "shared/balance", value: payment.amount %>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
