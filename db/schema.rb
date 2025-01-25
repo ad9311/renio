@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_25_205954) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_25_211025) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -21,6 +21,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_25_205954) do
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "total_payments", precision: 10, scale: 2, default: "0.0", null: false
     t.index ["wallet_id"], name: "index_account_receivables_on_wallet_id"
   end
 

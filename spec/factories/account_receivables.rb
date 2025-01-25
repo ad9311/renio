@@ -5,6 +5,7 @@
 #  id                :bigint           not null, primary key
 #  debtor            :string           not null
 #  status            :integer          default("pending"), not null
+#  total_payments    :decimal(10, 2)   default(0.0), not null
 #  total_receivables :decimal(10, 2)   default(0.0), not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null

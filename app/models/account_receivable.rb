@@ -5,6 +5,7 @@
 #  id                :bigint           not null, primary key
 #  debtor            :string           not null
 #  status            :integer          default("pending"), not null
+#  total_payments    :decimal(10, 2)   default(0.0), not null
 #  total_receivables :decimal(10, 2)   default(0.0), not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
@@ -25,11 +26,11 @@ class AccountReceivable < ApplicationRecord
   has_many :payments, dependent: :destroy
 
   validates :debtor, presence: true, length: { maximum: 20 }
-  validates :total_receivables, numericality: { greater_than_or_equal_to: 0 }
+  validates :total_receivables, :total_payments, numericality: { greater_than_or_equal_to: 0 }
 
   enum :status, { pending: 0, paid: 1, canceled: 2 }
 
   def balance
-    total_receivables - 0
+    total_receivables - total_payments
   end
 end
