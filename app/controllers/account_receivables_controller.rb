@@ -6,7 +6,9 @@ class AccountReceivablesController < ApplicationController
     @account_receivables = wallet.account_receivables.order(created_at: :desc)
   end
 
-  def show; end
+  def show
+    @receivables = account_receivable.receivables.order(created_at: :desc)
+  end
 
   def new
     @account_receivable = AccountReceivable.new

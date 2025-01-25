@@ -3,10 +3,6 @@
     <h2 class="title">Account receivable</h2>
     <div class="links-container">
       <%= link_to "Edit", edit_account_receivable_path(@account_receivable), class: "link" %>
-      <span>|</span>
-      <%= link_to "New receivable",
-      new_account_receivable_receivable_path(@account_receivable),
-      class: "link" %>
     </div>
     <hr>
     <div class="description-row">
@@ -15,11 +11,21 @@
     </div>
     <div class="description-row">
       <p class="description-field">Balance:</p>
-      <p><%= render "shared/balance", value: @account_receivable.balance %></p>
+      <p><%= render "shared/expense", value: @account_receivable.balance %></p>
     </div>
     <div class="description-row">
       <p class="description-field">Status:</p>
       <p><%= @account_receivable.status %></p>
     </div>
+  </section>
+  <section class="card">
+    <h2 class="title">Receivables</h2>
+    <div class="links-container">
+      <%= link_to "New receivable",
+      new_account_receivable_receivable_path(@account_receivable),
+      class: "link" %>
+    </div>
+    <hr>
+    <%= render "receivables" %>
   </section>
 </div>
