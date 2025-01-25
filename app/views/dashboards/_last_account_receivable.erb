@@ -20,7 +20,7 @@
     </div>
     <div class="description-row">
       <p class="inner-card-field">Status:</p>
-      <p><%= @summary[:last_account_receivable].status %></p>
+      <p><%= render "account_receivables/status", account_receivable: @summary[:last_account_receivable] %></p>
     </div>
   <% else %>
     <p class="inner-card-field">No account receivable</p>
