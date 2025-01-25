@@ -21,7 +21,8 @@
 class AccountReceivable < ApplicationRecord
   belongs_to :wallet
 
-  has_many :receivables
+  has_many :receivables, dependent: :destroy
+  has_many :payments, dependent: :destroy
 
   validates :debtor, presence: true, length: { maximum: 20 }
   validates :total_receivables, numericality: { greater_than_or_equal_to: 0 }
