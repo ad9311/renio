@@ -132,6 +132,18 @@
   .form-errors li {
     @apply text-rose-500 text-sm;
   }
+
+  .badge-warning {
+    @apply bg-yellow-100 text-yellow-800 border border-yellow-300 badge;
+  }
+
+  .badge-success {
+    @apply bg-green-100 text-green-800 border border-green-300 badge;
+  }
+
+  .badge-danger {
+    @apply bg-rose-100 text-rose-800 border border-rose-300 badge;
+  }
 }
 
 @layer utilities {
@@ -185,5 +197,9 @@
 
   .alert p {
     @apply text-rose-700 text-sm;
+  }
+
+  .badge {
+    @apply px-2 py-1 rounded-md text-xs;
   }
 }

@@ -1,0 +1,8 @@
+<% case @account_receivable.status %>
+<% when "pending" %>
+  <span class="badge-warning">Pending</span>
+<% when "paid" %>
+  <span class="badge-success">Paid</span>
+<% when "canceled" %>
+  <span class="badge-danger">Canceled</span>
+<% end %>

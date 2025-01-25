@@ -12,7 +12,7 @@
   <% if @summary[:last_account_receivable].present? %>
     <div class="description-row">
       <p class="inner-card-field">Balance:</p>
-      <p><%= render "shared/balance", value: @summary[:last_account_receivable].balance %></p>
+      <p><%= render "shared/expense", value: @summary[:last_account_receivable].balance %></p>
     </div>
     <div class="description-row">
       <p class="inner-card-field">Debtor:</p>
