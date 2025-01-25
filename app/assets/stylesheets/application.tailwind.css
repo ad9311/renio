@@ -66,7 +66,7 @@
   }
 
   .inner-card {
-    @apply bg-white border border-slate-300 rounded py-1 px-2;
+    @apply bg-white border border-slate-300 rounded p-3;
   }
 
   .inner-card-field {
