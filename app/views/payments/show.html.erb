@@ -1,2 +1,18 @@
-<h1>Payments#show</h1>
-<p>Find me in app/views/payments/show.html.erb</p>
+<section class="card">
+  <h2 class="title">Payment</h2>
+  <div class="links-container flex items-center justify-between">
+    <%= link_to "Edit",
+    edit_account_receivable_payment_path(@account_receivable, @payment) %>
+    <%= button_to "Delete",
+    account_receivable_payment_path(@account_receivable, @payment),
+    method: :delete,
+    class: "link-danger" %>
+  </div>
+  <hr>
+  <div class="inner-card">
+    <div class="flex justify-between items-center text-sm">
+      <%= @payment.date_received %>
+      <%= render "shared/balance", value: @payment.amount %>
+    </div>
+  </div>
+</section>
