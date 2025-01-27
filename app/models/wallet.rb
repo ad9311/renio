@@ -18,6 +18,12 @@
 class Wallet < ApplicationRecord
   belongs_to :user
 
+
   has_many :budgets, dependent: :destroy
   has_many :account_receivables, dependent: :destroy
+
+  def current_budget
+    uid = "#{id}-#{Date.today.month}-#{Date.today.year}"
+    budgets.find_by(uid:)
+  end
 end

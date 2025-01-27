@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :budgets, param: :uid, except: %i[new destroy] do
     resources :expenses, except: :index
   end
+  post "budgets/:uid/next", to: "budgets#next", as: :budget_next
 
   # Accounts receivable
   resources :account_receivables do

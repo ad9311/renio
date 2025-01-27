@@ -20,6 +20,19 @@ class BudgetsController < ApplicationController
     end
   end
 
+  def next
+    flash = {}
+    result = Budgets::CreateNext.call(wallet:)
+
+    if result.success?
+      flash[:notice] = "Budget created successfully"
+    else
+      flash[:alert] = "Error creating budget: #{result.errors.join(', ')}"
+    end
+
+    redirect_to(budget_path(result.budget), **flash)
+  end
+
   private
 
   def budget
