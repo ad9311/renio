@@ -21,6 +21,9 @@ class Payment < ApplicationRecord
   belongs_to :account_receivable
 
   validates :amount, presence: true, numericality: { greater_than: 0 }
+  validate :validate_amount_on_create, on: :create
+  validate :validate_amount_on_update, on: :update
+
   validates :date_received, presence: true
   validate :validate_date_received
 
@@ -34,6 +37,22 @@ class Payment < ApplicationRecord
   after_destroy :update_status
 
   private
+
+  def amount_error
+    errors.add(:amount, "can't be greater than the account receivable balance")
+  end
+
+  def validate_amount_on_create
+    amount_error if amount > account_receivable.balance
+  end
+
+  def validate_amount_on_update
+    if amount_changed?
+      total_payments = account_receivable.total_payments + amount - amount_was
+      balance = account_receivable.total_receivables - total_payments
+      amount_error if balance.negative?
+    end
+  end
 
   def validate_date_received
     errors.add(:date_received, "can't be in the future") if date_received > Time.zone.today
