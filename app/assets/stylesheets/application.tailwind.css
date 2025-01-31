@@ -97,6 +97,10 @@
     @apply bg-sky-600 text-white hover:bg-sky-500 button;
   }
 
+  .button-danger {
+    @apply bg-rose-600 text-white hover:bg-rose-500 button;
+  }
+
   .form label {
     @apply block text-sm font-medium;
   }
@@ -124,6 +128,10 @@
 
   .form .submit {
     @apply button-primary;
+  }
+
+  .form .abort {
+    @apply button-danger;
   }
 
   .form-errors {

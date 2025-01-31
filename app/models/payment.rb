@@ -24,8 +24,13 @@ class Payment < ApplicationRecord
   validates :date_received, presence: true
 
   after_create :update_account_total_payments_on_create
+  after_create :update_status
+
   after_update :update_account_total_payments_on_update
+  after_update :update_status
+
   after_destroy :update_account_total_payments_on_destroy
+  after_destroy :update_status
 
   private
 
@@ -50,5 +55,13 @@ class Payment < ApplicationRecord
   def update_account_total_payments(params:)
     result = AccountReceivables::UpdateTotalPayments.call(account_receivable:, params:)
     raise "Failed to update account total payments: #{result.inspect}" unless result.success?
+  end
+
+  def update_status
+    return if account_receivable.canceled?
+
+    account_receivable.paid! and return if account_receivable.balance.zero?
+
+    account_receivable.pending!
   end
 end

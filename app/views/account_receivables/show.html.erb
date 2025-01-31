@@ -22,24 +22,26 @@
       <p><%= render "status", account_receivable: @account_receivable %></p>
     </div>
   </section>
-  <section class="card">
-    <h2 class="title">Receivables</h2>
-    <div class="links-container">
-      <%= link_to "New",
-      new_account_receivable_receivable_path(@account_receivable),
-      class: "link" %>
-    </div>
-    <hr>
-    <%= render "receivables" %>
-  </section>
-  <section class="card">
-    <h2 class="title">Payments</h2>
-    <div class="links-container">
-      <%= link_to "New",
-      new_account_receivable_payment_path(@account_receivable),
-      class: "link" %>
-    </div>
-    <hr>
-    <%= render "payments" %>
-  </section>
+  <% unless @account_receivable.canceled? %>
+    <section class="card">
+      <h2 class="title">Receivables</h2>
+      <div class="links-container">
+        <%= link_to "New",
+        new_account_receivable_receivable_path(@account_receivable),
+        class: "link" %>
+      </div>
+      <hr>
+      <%= render "receivables" %>
+    </section>
+    <section class="card">
+      <h2 class="title">Payments</h2>
+      <div class="links-container">
+        <%= link_to "New",
+        new_account_receivable_payment_path(@account_receivable),
+        class: "link" %>
+      </div>
+      <hr>
+      <%= render "payments" %>
+    </section>
+  <% end %>
 </div>

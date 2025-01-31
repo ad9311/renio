@@ -1,6 +1,8 @@
 class ReceivablesController < ApplicationController
   before_action :account_receivable
+  before_action :account_receivable_not_canceled
   before_action :receivable, except: %i[new create]
+
 
   def show; end
 
@@ -37,6 +39,13 @@ class ReceivablesController < ApplicationController
 
   def account_receivable
     @account_receivable ||= AccountReceivable.find_by(id: params[:account_receivable_id])
+  end
+
+  def account_receivable_not_canceled
+    redirect_to(
+      account_receivable_path(account_receivable),
+      alert: "Account receivable is canceled"
+    ) if account_receivable.canceled?
   end
 
   def receivable
