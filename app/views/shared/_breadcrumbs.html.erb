@@ -1,0 +1,12 @@
+<nav class="mb-4">
+  <% dataset.each_with_index do |data, index| %>
+    <% if data[:path].nil? %>
+      <span class="link"><%= data[:name] %></span>
+    <% else %>
+      <%= link_to data[:name], data[:path], class: "link" %>
+    <% end %>
+    <% if index < dataset.size - 1 %>
+      <span class="text-xs">/</span>
+    <% end %>
+  <% end %>
+</nav>
