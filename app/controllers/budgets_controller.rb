@@ -14,7 +14,7 @@ class BudgetsController < ApplicationController
 
   def update
     if budget.update(budget_params)
-      redirect_to budget_path(budget.uid), notice: "Budget updated successfully"
+      redirect_to budget_path(budget.uid), notice: 'Budget updated successfully'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -25,7 +25,7 @@ class BudgetsController < ApplicationController
     result = Budgets::CreateNext.call(wallet:)
 
     if result.success?
-      flash[:notice] = "Budget created successfully"
+      flash[:notice] = 'Budget created successfully'
     else
       flash[:alert] = "Error creating budget: #{result.errors.join(', ')}"
     end

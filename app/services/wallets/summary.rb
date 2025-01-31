@@ -28,7 +28,7 @@ class Wallets::Summary
 
   def create_budget
     budget = Budget.create(wallet:, month:, year:)
-    raise "Failed to create budget" unless budget.persisted?
+    raise 'Failed to create budget' unless budget.persisted?
 
     @current_budget = budget
   end

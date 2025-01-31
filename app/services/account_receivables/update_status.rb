@@ -10,14 +10,14 @@ class AccountReceivables::UpdateStatus
   end
 
   def call
-    status_updated = ""
+    status_updated = ''
 
     if account_receivable.canceled?
       when_canceled
-      status_updated = "activated"
+      status_updated = 'activated'
     else
       account_receivable.canceled!
-      status_updated = "canceled"
+      status_updated = 'canceled'
     end
 
     Result.new(set_message status_updated)

@@ -21,7 +21,7 @@ class AccountReceivablesController < ApplicationController
   def create
     account_receivable = wallet.account_receivables.new(account_receivable_params)
     if account_receivable.save
-      redirect_to account_receivables_path, notice: "Account receivable created successfully"
+      redirect_to account_receivables_path, notice: 'Account receivable created successfully'
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class AccountReceivablesController < ApplicationController
 
   def update
     if account_receivable.update(account_receivable_params)
-      redirect_to account_receivables_path, notice: "Account receivable updated successfully"
+      redirect_to account_receivables_path, notice: 'Account receivable updated successfully'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,7 +37,7 @@ class AccountReceivablesController < ApplicationController
 
   def destroy
     account_receivable.destroy!
-    redirect_to account_receivables_path, notice: "Account receivable deleted successfully"
+    redirect_to account_receivables_path, notice: 'Account receivable deleted successfully'
   end
 
   def update_status
@@ -62,7 +62,7 @@ class AccountReceivablesController < ApplicationController
 
   def redirect_if_canceled
     path = account_receivable_path(account_receivable)
-    alert = "This account receivable is canceled"
+    alert = 'This account receivable is canceled'
 
     redirect_to(path, alert:) and return if account_receivable.canceled?
   end

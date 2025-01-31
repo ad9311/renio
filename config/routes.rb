@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
-  get "up" => "rails/health#show", as: :rails_health_check
+  get 'up' => 'rails/health#show', as: :rails_health_check
 
-  root to: redirect("/dashboard")
+  root to: redirect('/dashboard')
 
   # Devise
   devise_for :users
 
   # Dashboard
-  get "dashboard", to: "dashboards#index", as: :dashboard
+  get 'dashboard', to: 'dashboards#index', as: :dashboard
 
   # Budgets
   resources :budgets, param: :uid, except: %i[new destroy] do
     resources :expenses, except: :index
   end
-  post "budgets/:uid/next", to: "budgets#next", as: :budget_next
+  post 'budgets/:uid/next', to: 'budgets#next', as: :budget_next
 
   # Accounts receivable
   resources :account_receivables do
@@ -21,6 +21,6 @@ Rails.application.routes.draw do
     resources :payments, except: :index
   end
 
-  patch "account_receivables/:id/update_status", to: "account_receivables#update_status",
+  patch 'account_receivables/:id/update_status', to: 'account_receivables#update_status',
   as: :account_receivable_update_status
 end
