@@ -25,9 +25,6 @@
     <%= render "shared/navbar" %>
     <%= render "shared/flash" %>
     <main class="main-container">
-      <% if user_signed_in? %>
-        <%= render "shared/prev_button" %>
-      <% end %>
       <%= yield %>
     </main>
   </body>
