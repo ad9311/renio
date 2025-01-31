@@ -21,5 +21,6 @@ Rails.application.routes.draw do
     resources :payments, except: :index
   end
 
-  patch "account_receivables/:id/update_status", to: "account_receivables#update_status", as: :account_receivable_update_status
+  patch "account_receivables/:id/update_status", to: "account_receivables#update_status",
+  as: :account_receivable_update_status
 end
