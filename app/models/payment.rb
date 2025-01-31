@@ -22,6 +22,7 @@ class Payment < ApplicationRecord
 
   validates :amount, presence: true, numericality: { greater_than: 0 }
   validates :date_received, presence: true
+  validate :validate_date_received
 
   after_create :update_account_total_payments_on_create
   after_create :update_status
@@ -33,6 +34,10 @@ class Payment < ApplicationRecord
   after_destroy :update_status
 
   private
+
+  def validate_date_received
+    errors.add(:date_received, "can't be in the future") if date_received > Time.zone.today
+  end
 
   def update_account_total_payments_on_create
     params = { credit: amount, debit: 0 }
