@@ -26,6 +26,7 @@ class User < ApplicationRecord
   )
 
   has_one :wallet, dependent: :destroy
+  has_many :todos, dependent: :destroy
 
   after_create :setup_accounts
 

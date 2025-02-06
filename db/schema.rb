@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_25_211025) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_06_015409) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -76,6 +76,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_25_211025) do
     t.index ["account_receivable_id"], name: "index_receivables_on_account_receivable_id"
   end
 
+  create_table "todos", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title", null: false
+    t.boolean "categorized", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_todos_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -101,5 +110,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_25_211025) do
   add_foreign_key "expenses", "expense_categories"
   add_foreign_key "payments", "account_receivables"
   add_foreign_key "receivables", "account_receivables"
+  add_foreign_key "todos", "users"
   add_foreign_key "wallets", "users"
 end
