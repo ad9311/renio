@@ -1,3 +1,5 @@
+<%= render "shared/breadcrumbs",
+dataset: breadcrumbs_for(:account_receivables, :edit) %>
 <div class="card">
   <h2 class="title title-bottom-margin">Edit account receivable</h2>
   <% unless @account_receivable.canceled? %>
