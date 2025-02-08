@@ -1,0 +1,20 @@
+<div>
+  <h3 class="subtitle">Last TODO</h3>
+  <div class="links-container">
+    <% unless @last_todo.blank? %>
+      <%= link_to "View", todo_path(@last_todo), class: "link" %>
+      <span>|</span>
+    <% end %>
+    <%= link_to "New", new_todo_path %>
+    <span>|</span>
+    <%= link_to "List", todos_path %>
+  </div>
+  <% unless @last_todo.blank? %>
+    <div class="description-row">
+      <p class="inner-card-field">Title:</p>
+      <p><%= @last_todo.title %></p>
+    </div>
+  <% else %>
+    <p class="inner-card-field">No todo</p>
+  <% end %>
+</div>

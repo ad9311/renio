@@ -1,17 +1,17 @@
 <div>
   <h3 class="subtitle">Current budget
-    <%= @summary[:current_budget].date %></h3>
+    <%= @wallet_summary[:current_budget].date %></h3>
   <div class="links-container">
-    <%= link_to "View", budget_path(@summary[:current_budget].uid) %>
+    <%= link_to "View", budget_path(@wallet_summary[:current_budget].uid) %>
     <span>|</span>
     <%= link_to "List", budgets_path %>
   </div>
   <div class="description-row">
     <p class="inner-card-field">Balance:</p>
-    <p><%= render "shared/balance", value: @summary[:current_budget].balance %></p>
+    <p><%= render "shared/balance", value: @wallet_summary[:current_budget].balance %></p>
   </div>
   <div class="description-row">
     <p class="inner-card-field">Last expense:</p>
-    <p><%= render "shared/expense", value: @summary[:last_expense]&.amount || 0 %></p>
+    <p><%= render "shared/expense", value: @wallet_summary[:last_expense]&.amount || 0 %></p>
   </div>
 </div>

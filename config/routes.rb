@@ -23,4 +23,7 @@ Rails.application.routes.draw do
 
   patch 'account_receivables/:id/update_status', to: 'account_receivables#update_status',
   as: :account_receivable_update_status
+
+  # Todos
+  resources :todos
 end

@@ -1,0 +1,14 @@
+<%= render "shared/form_errors", model: @todo %>
+<%= form_with model: @todo, class: "form" do |form| %>
+  <fieldset>
+    <%= form.label :title %>
+    <%= form.text_field :title, placeholder: "Title" %>
+  </fieldset>
+  <fieldset>
+    <%= form.label :categorized %>
+    <%= form.check_box :categorized %>
+  </fieldset>
+  <div class="actions">
+    <%= form.submit "Save", class: "submit" %>
+  </div>
+<% end %>
