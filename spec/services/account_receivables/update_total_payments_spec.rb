@@ -10,7 +10,7 @@ end
 RSpec.describe AccountReceivables::UpdateTotalPayments do
   subject(:call) { described_class.call(account_receivable:, params:) }
 
-  let(:account_receivable) { create(:account_receivable) }
+  let(:account_receivable) { create(:account_receivable, total_receivables: 1000) }
 
   context "when the result is successful" do
     let(:params) { { credit: 100, debit: 0 } }
