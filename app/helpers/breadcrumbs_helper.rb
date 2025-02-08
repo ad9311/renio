@@ -15,6 +15,8 @@ module BreadcrumbsHelper
       breadcrumbs.concat breadcrumbs_for_payments(action)
     when :expenses
       breadcrumbs.concat breadcrumbs_for_expenses(action)
+    when :todos
+      breadcrumbs.concat breadcrumbs_for_todos(action)
     else
       breadcrumbs
     end
@@ -94,6 +96,22 @@ module BreadcrumbsHelper
     when :edit
       payment = { name: 'Payment', path: account_receivable_payment_path(@account_receivable, @payment) }
       [account_receivable, payment, { name: 'Edit' }]
+    else
+      []
+    end
+  end
+
+  def breadcrumbs_for_todos(action)
+    case action
+    when :index
+      [{ name: 'Todos' }]
+    when :show
+      [{ name: 'Todo' }]
+    when :new
+      [{ name: 'Todos', path: todos_path }, { name: 'New' }]
+    when :edit
+      show_path = { name: 'Todo', path: todo_path(@todo) }
+      [show_path, { name: 'Edit' }]
     else
       []
     end

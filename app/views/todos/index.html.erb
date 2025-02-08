@@ -1,1 +1,16 @@
-
+<%= render "shared/breadcrumbs", dataset: breadcrumbs_for(:todos, :index) %>
+<section class="card">
+  <h1 class="title">Todos</h1>
+  <hr>
+  <ul class="flex flex-col gap-2">
+    <% @todos.each do |todo| %>
+      <li class="inner-card inner-card-hover leading-none">
+        <%= link_to todo_path(todo) do %>
+          <div class="mb-2">
+            <p class="inner-card-top-label"><%= todo.title %></p>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</section>
