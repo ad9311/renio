@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Rails/HelperInstanceVariable
-# rubocop:disable Metrics/AbcSize
-
 module BreadcrumbsHelper
   def breadcrumbs
     [{name: 'Home', path: dashboard_path}]
@@ -122,6 +119,3 @@ module BreadcrumbsHelper
     end
   end
 end
-
-# rubocop:enable Rails/HelperInstanceVariable
-# rubocop:enable Metrics/AbcSize
