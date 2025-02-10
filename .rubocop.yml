@@ -7,12 +7,12 @@ AllCops:
   TargetRubyVersion: 3.2.2
   SuggestExtensions: false
   Exclude:
-    - 'db/schema.rb'
-    - 'db/migrate/*.rb'
-    - 'db/seeds.rb'
-    - 'db/cache_schema.rb'
-    - 'db/queue_schema.rb'
-    - 'bin/*'
+    - "db/schema.rb"
+    - "db/migrate/*.rb"
+    - "db/seeds.rb"
+    - "db/cache_schema.rb"
+    - "db/queue_schema.rb"
+    - "bin/*"
 
 Bundler/OrderedGems:
   TreatCommentsAsGroupSeparators: true
@@ -104,6 +104,8 @@ Metrics/ClassLength:
   Enabled: false
 
 Style/ClassAndModuleChildren:
+  Exclude:
+    - "config/application.rb"
   EnforcedStyle: compact
 
 Style/EmptyMethod:
