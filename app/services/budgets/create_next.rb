@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Budgets::CreateNext
   include Callable
 
@@ -21,7 +23,7 @@ class Budgets::CreateNext
 
     new_budget = wallet.budgets.new(
       month: next_date.month,
-      year: next_date.year
+      year: next_date.year,
     )
 
     new_budget.save

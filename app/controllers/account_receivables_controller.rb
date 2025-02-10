@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AccountReceivablesController < ApplicationController
   before_action :wallet, only: :index
   before_action :account_receivable, except: %i[index new create]
@@ -53,7 +55,7 @@ class AccountReceivablesController < ApplicationController
   end
 
   def account_receivable_params
-    params.require(:account_receivable).permit(:debtor)
+    params.expect(account_receivable: [:debtor])
   end
 
   def wallet

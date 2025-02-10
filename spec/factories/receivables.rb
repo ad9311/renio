@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: receivables
@@ -20,7 +22,7 @@
 FactoryBot.define do
   factory :receivable do
     association :account_receivable
-    description { "Test" }
-    amount { "9.99 " }
+    description { 'Test' }
+    amount { '9.99 ' }
   end
 end

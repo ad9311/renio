@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: todos
@@ -20,7 +22,7 @@
 FactoryBot.define do
   factory :todo do
     user { nil }
-    title { "MyString" }
+    title { 'MyString' }
     categorized { false }
   end
 end

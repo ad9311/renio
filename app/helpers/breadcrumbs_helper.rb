@@ -1,6 +1,11 @@
+# frozen_string_literal: true
+
+# rubocop:disable Rails/HelperInstanceVariable
+# rubocop:disable Metrics/AbcSize
+
 module BreadcrumbsHelper
   def breadcrumbs
-    [{ name: 'Home', path: dashboard_path }]
+    [{name: 'Home', path: dashboard_path}]
   end
 
   def breadcrumbs_for(controller, action)
@@ -27,27 +32,27 @@ module BreadcrumbsHelper
   def breadcrumbs_for_budgets(action)
     case action
     when :index
-      [{ name: 'Budgets' }]
+      [{name: 'Budgets'}]
     when :show
-      [{ name: 'Budget' }]
+      [{name: 'Budget'}]
     when :edit
-      [{ name: 'Budget', path: budget_path(@budget) }, { name: 'Edit' }]
+      [{name: 'Budget', path: budget_path(@budget)}, {name: 'Edit'}]
     else
       []
     end
   end
 
   def breadcrumbs_for_expenses(action)
-    budget = { name: 'Budget', path: budget_path(@budget) }
+    budget = {name: 'Budget', path: budget_path(@budget)}
 
     case action
     when :new
-      [budget, { name: 'New expense' }]
+      [budget, {name: 'New expense'}]
     when :show
-      [budget, { name: 'Expense' }]
+      [budget, {name: 'Expense'}]
     when :edit
-      expense = { name: 'Expense', path: budget_expense_path(@budget, @expense) }
-      [budget, expense, { name: 'Edit' }]
+      expense = {name: 'Expense', path: budget_expense_path(@budget, @expense)}
+      [budget, expense, {name: 'Edit'}]
     else
       []
     end
@@ -56,46 +61,46 @@ module BreadcrumbsHelper
   def breadcrumbs_for_account_receivables(action)
     case action
     when :index
-      [{ name: 'Account receivables' }]
+      [{name: 'Account receivables'}]
     when :show
-      [{ name: 'Account receivable' }]
+      [{name: 'Account receivable'}]
     when :new
-      [{ name: 'Account Receivables', path: account_receivables_path }, { name: 'New' }]
+      [{name: 'Account Receivables', path: account_receivables_path}, {name: 'New'}]
     when :edit
-      show_path = { name: 'Account receivable', path: account_receivable_path(@account_receivable) }
-      [show_path, { name: 'Edit' }]
+      show_path = {name: 'Account receivable', path: account_receivable_path(@account_receivable)}
+      [show_path, {name: 'Edit'}]
     else
       []
     end
   end
 
   def breadcrumbs_for_receivables(action)
-    account_receivable = { name: 'Account receivable', path: account_receivable_path(@account_receivable) }
+    account_receivable = {name: 'Account receivable', path: account_receivable_path(@account_receivable)}
 
     case action
     when :new
-      [account_receivable, { name: 'New receivable' }]
+      [account_receivable, {name: 'New receivable'}]
     when :show
-      [account_receivable, { name: 'Receivable' }]
+      [account_receivable, {name: 'Receivable'}]
     when :edit
-      receivable = { name: 'Receivable', path: account_receivable_receivable_path(@account_receivable, @receivable) }
-      [account_receivable, receivable, { name: 'Edit' }]
+      receivable = {name: 'Receivable', path: account_receivable_receivable_path(@account_receivable, @receivable)}
+      [account_receivable, receivable, {name: 'Edit'}]
     else
       []
     end
   end
 
   def breadcrumbs_for_payments(action)
-    account_receivable = { name: 'Account receivable', path: account_receivable_path(@account_receivable) }
+    account_receivable = {name: 'Account receivable', path: account_receivable_path(@account_receivable)}
 
     case action
     when :new
-      [account_receivable, { name: 'New payment' }]
+      [account_receivable, {name: 'New payment'}]
     when :show
-      [account_receivable, { name: 'Payment' }]
+      [account_receivable, {name: 'Payment'}]
     when :edit
-      payment = { name: 'Payment', path: account_receivable_payment_path(@account_receivable, @payment) }
-      [account_receivable, payment, { name: 'Edit' }]
+      payment = {name: 'Payment', path: account_receivable_payment_path(@account_receivable, @payment)}
+      [account_receivable, payment, {name: 'Edit'}]
     else
       []
     end
@@ -104,16 +109,19 @@ module BreadcrumbsHelper
   def breadcrumbs_for_todos(action)
     case action
     when :index
-      [{ name: 'Todos' }]
+      [{name: 'Todos'}]
     when :show
-      [{ name: 'Todo' }]
+      [{name: 'Todo'}]
     when :new
-      [{ name: 'Todos', path: todos_path }, { name: 'New' }]
+      [{name: 'Todos', path: todos_path}, {name: 'New'}]
     when :edit
-      show_path = { name: 'Todo', path: todo_path(@todo) }
-      [show_path, { name: 'Edit' }]
+      show_path = {name: 'Todo', path: todo_path(@todo)}
+      [show_path, {name: 'Edit'}]
     else
       []
     end
   end
 end
+
+# rubocop:enable Rails/HelperInstanceVariable
+# rubocop:enable Metrics/AbcSize

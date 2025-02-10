@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BudgetsController < ApplicationController
   before_action :budget, only: %i[show edit update]
   before_action :wallet, only: :index
@@ -40,7 +42,7 @@ class BudgetsController < ApplicationController
   end
 
   def budget_params
-    params.require(:budget).permit(:amount)
+    params.expect(budget: [:amount])
   end
 
   def wallet

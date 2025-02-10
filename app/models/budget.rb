@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: budgets
@@ -26,13 +28,13 @@ class Budget < ApplicationRecord
 
   has_many :expenses, dependent: :destroy
 
-  validates :amount, :total_expenses, numericality: { greater_than_or_equal_to: 0 }, on: :create
-  validates :amount, numericality: { greater_than: 0 }, on: :update
+  validates :amount, :total_expenses, numericality: {greater_than_or_equal_to: 0}, on: :create
+  validates :amount, numericality: {greater_than: 0}, on: :update
   validates :uid, presence: true, uniqueness: true
 
   before_validation :set_uid, on: :create
 
-  def to_param; uid end
+  def to_param = uid
 
   def balance
     amount - total_expenses

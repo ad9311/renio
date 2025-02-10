@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -22,7 +24,7 @@ class User < ApplicationRecord
     :registerable,
     :recoverable,
     :rememberable,
-    :validatable
+    :validatable,
   )
 
   has_one :wallet, dependent: :destroy

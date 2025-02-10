@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: budgets
@@ -27,7 +29,7 @@ FactoryBot.define do
     uid { nil }
     month { Time.zone.now.month }
     year { Time.zone.now.year }
-    amount { "0.0" }
-    total_expenses { "0.0" }
+    amount { '0.0' }
+    total_expenses { '0.0' }
   end
 end

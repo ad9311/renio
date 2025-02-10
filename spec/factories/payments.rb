@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: payments
@@ -21,6 +23,6 @@ FactoryBot.define do
   factory :payment do
     association :account_receivable
     date_received { Time.zone.now }
-    amount { "9.99" }
+    amount { '9.99' }
   end
 end

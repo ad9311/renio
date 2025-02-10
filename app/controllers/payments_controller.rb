@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PaymentsController < ApplicationController
   before_action :account_receivable
   before_action :account_receivable_not_canceled
@@ -41,10 +43,12 @@ class PaymentsController < ApplicationController
   end
 
   def account_receivable_not_canceled
+    return unless account_receivable.canceled?
+
     redirect_to(
       account_receivable_path(account_receivable),
-      alert: 'Account receivable is canceled'
-    ) if account_receivable.canceled?
+      alert: 'Account receivable is canceled',
+    )
   end
 
   def payment
@@ -52,6 +56,6 @@ class PaymentsController < ApplicationController
   end
 
   def payment_params
-    params.require(:payment).permit(:date_received, :amount)
+    params.expect(payment: %i[date_received amount])
   end
 end

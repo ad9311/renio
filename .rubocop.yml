@@ -1,54 +1,131 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+require:
+  - rubocop-rails
+  - rubocop-rspec
 
-# Layout
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.2.2
+  SuggestExtensions: false
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/migrate/*.rb'
+    - 'db/seeds.rb'
+    - 'db/cache_schema.rb'
+    - 'db/queue_schema.rb'
+    - 'bin/*'
+
+Bundler/OrderedGems:
+  TreatCommentsAsGroupSeparators: true
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/HashAlignment:
+  EnforcedLastArgumentHashStyle: always_ignore
+
+Layout/IndentationConsistency:
+  EnforcedStyle: normal
+
 Layout/LineLength:
   Max: 120
 
-Layout/SpaceInsideArrayLiteralBrackets:
-  EnforcedStyle: no_space
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+  IndentationWidth: 2
 
 Layout/SpaceInsideHashLiteralBraces:
-  EnforcedStyle: space
+  EnforcedStyle: no_space
+  EnforcedStyleForEmptyBraces: no_space
 
-# Style
-Style/FrozenStringLiteralComment:
+Layout/TrailingEmptyLines:
+  EnforcedStyle: final_newline
+
+# https://github.com/rubocop/rubocop/issues/4222
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - "spec/**/*"
+
+Naming/MemoizedInstanceVariableName:
+  EnforcedStyleForLeadingUnderscores: optional
+
+Naming/RescuedExceptionsVariableName:
+  PreferredName: error
+
+RSpec/ContextWording:
+  Prefixes:
+    - when
+    - with
+    - without
+    - for
+    - if
+    - unless
+
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - "spec/api/*/entities/**/*"
+    - "spec/api/*/entities/**/*"
+
+RSpec/EmptyLineAfterSubject:
+  Exclude:
+    - "spec/factories/**"
+
+RSpec/ExampleLength:
+  Enabled: true
+  Max: 10
+
+RSpec/ExpectChange:
+  EnforcedStyle: block
+
+RSpec/MessageSpies:
+  EnforcedStyle: receive
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/ModuleLength:
   Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Style/EmptyMethod:
+  EnforcedStyle: compact
+
+Style/HashAsLastArrayItem:
+  EnforcedStyle: braces
 
 Style/StringLiterals:
   EnforcedStyle: single_quotes
 
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
 Style/TrailingCommaInArrayLiteral:
-  Enabled: true
+  EnforcedStyleForMultiline: comma
 
-# Metrics
-Metrics/BlockLength:
-  Exclude:
-    - "spec/**/*"
-  Max: 25
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
 
-Metrics/MethodLength:
-  Max: 15
+Style/Documentation:
+  Enabled: false
 
-# Naming
-Naming/VariableName:
-  Enabled: true
-
-# Rails
-Rails/FindEach:
-  Enabled: true
-
-Rails/TimeZone:
-  Enabled: true
-
-Rails/OutputSafety:
-  Enabled: true
-
-# Security
-Security/Open:
-  Enabled: true
+Rails/I18nLocaleTexts:
+  Enabled: false

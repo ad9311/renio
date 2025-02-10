@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: expense_categories
@@ -16,6 +18,6 @@
 class ExpenseCategory < ApplicationRecord
   has_many :expenses, dependent: :destroy
 
-  validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
+  validates :name, presence: true, uniqueness: true, length: {maximum: 50}
   validates :uid, presence: true, uniqueness: true
 end

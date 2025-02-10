@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: expenses
@@ -24,8 +26,8 @@ class Expense < ApplicationRecord
   belongs_to :expense_category
   belongs_to :budget
 
-  validates :amount, presence: true, numericality: { greater_than: 0 }
-  validates :description, presence: true, length: { maximum: 50 }
+  validates :amount, presence: true, numericality: {greater_than: 0}
+  validates :description, presence: true, length: {maximum: 50}
 
   after_create :update_budget_total_expenses_on_create
   after_update :update_budget_total_expenses_on_update
@@ -34,20 +36,20 @@ class Expense < ApplicationRecord
   private
 
   def update_budget_total_expenses_on_create
-    params = { credit: amount, debit: 0 }
+    params = {credit: amount, debit: 0}
     update_budget_total_expenses(params:)
   end
 
   def update_budget_total_expenses_on_update
-    if previous_changes.include?(:amount)
-      old_amount, new_amount = previous_changes[:amount]
-      params = { credit: new_amount, debit: old_amount }
-      update_budget_total_expenses(params:)
-    end
+    return unless previous_changes.include?(:amount)
+
+    old_amount, new_amount = previous_changes[:amount]
+    params = {credit: new_amount, debit: old_amount}
+    update_budget_total_expenses(params:)
   end
 
   def update_budget_total_expenses_on_destroy
-    params = { credit: 0, debit: amount }
+    params = {credit: 0, debit: amount}
     update_budget_total_expenses(params:)
   end
 

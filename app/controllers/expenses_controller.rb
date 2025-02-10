@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ExpensesController < ApplicationController
   before_action :budget
   before_action :expense, except: %i[new create]
@@ -45,7 +47,7 @@ class ExpensesController < ApplicationController
   end
 
   def expense_params
-    params.require(:expense).permit(:description, :amount, :expense_category_id)
+    params.expect(expense: %i[description amount expense_category_id])
   end
 
   def redirect_to_budget(notice)

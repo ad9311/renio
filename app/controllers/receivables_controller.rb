@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class ReceivablesController < ApplicationController
   before_action :account_receivable
   before_action :account_receivable_not_canceled
   before_action :receivable, except: %i[new create]
-
 
   def show; end
 
@@ -42,10 +43,12 @@ class ReceivablesController < ApplicationController
   end
 
   def account_receivable_not_canceled
+    return unless account_receivable.canceled?
+
     redirect_to(
       account_receivable_path(account_receivable),
-      alert: 'Account receivable is canceled'
-    ) if account_receivable.canceled?
+      alert: 'Account receivable is canceled',
+    )
   end
 
   def receivable
@@ -53,6 +56,6 @@ class ReceivablesController < ApplicationController
   end
 
   def receivable_params
-    params.require(:receivable).permit(:description, :amount)
+    params.expect(receivable: %i[description amount])
   end
 end

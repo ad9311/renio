@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Users::Accounts::SetUp
   include Callable
 

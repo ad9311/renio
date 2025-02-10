@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -21,7 +23,7 @@ gem 'cssbundling-rails'
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[ windows jruby ]
+gem 'tzinfo-data', platforms: %i[windows jruby]
 
 # Use the database-backed adapters for Rails.cache and Active Job
 gem 'solid_cache'
@@ -44,7 +46,7 @@ gem 'devise', '~> 4.9'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem 'debug', platforms: %i[ mri windows ], require: 'debug/prelude'
+  gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem 'brakeman', require: false
@@ -63,6 +65,12 @@ group :development, :test do
 
   # Pry for debugging [https://github.com/pry/pry]
   gem 'pry', '~> 0.15.2'
+
+  # Rubocop for Rails [https://github.com/rubocop/rubocop-rails]
+  gem 'rubocop-rails', '~> 2.29'
+
+  # Rubocop for RSpec [https://github.com/rubocop/rubocop-rspec]
+  gem 'rubocop-rspec', '~> 3.4'
 end
 
 group :development do

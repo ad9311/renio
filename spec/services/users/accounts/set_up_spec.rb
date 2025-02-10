@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Users::Accounts::SetUp, type: :service do
@@ -9,7 +11,7 @@ describe Users::Accounts::SetUp, type: :service do
     user.wallet.destroy
   end
 
-  it "creates a wallet for the user" do
+  it 'creates a wallet for the user' do
     expect { call }.to change { user.reload.wallet }.from(nil).to(an_instance_of(Wallet))
   end
 end

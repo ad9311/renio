@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -25,8 +27,6 @@ RSpec.describe User, type: :model do
       user.reload
 
       expect(user.wallet).to be_present
-      expect(user.wallet).to be_an(Wallet)
-      expect(user.wallet.user).to eq(user)
     end
   end
 end

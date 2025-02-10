@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: account_receivables
@@ -25,10 +27,10 @@ class AccountReceivable < ApplicationRecord
   has_many :receivables, dependent: :destroy
   has_many :payments, dependent: :destroy
 
-  validates :debtor, presence: true, length: { maximum: 20 }
-  validates :total_receivables, :total_payments, numericality: { greater_than_or_equal_to: 0 }
+  validates :debtor, presence: true, length: {maximum: 20}
+  validates :total_receivables, :total_payments, numericality: {greater_than_or_equal_to: 0}
 
-  enum :status, { pending: 0, paid: 1, canceled: 2 }
+  enum :status, {pending: 0, paid: 1, canceled: 2}
 
   def balance
     total_receivables - total_payments

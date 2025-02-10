@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AccountReceivables::UpdateStatus
   include Callable
 
@@ -20,7 +22,7 @@ class AccountReceivables::UpdateStatus
       status_updated = 'canceled'
     end
 
-    Result.new(set_message status_updated)
+    Result.new(message(status_updated))
   end
 
   private
@@ -33,7 +35,7 @@ class AccountReceivables::UpdateStatus
     end
   end
 
-  def set_message(status_updated)
+  def message(status_updated)
     "Account receivable #{status_updated} successfully"
   end
 end

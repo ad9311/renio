@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: todos
@@ -20,5 +22,5 @@
 class Todo < ApplicationRecord
   belongs_to :user
 
-  validates :title, presence: true, length: { maximum: 50 }
+  validates :title, presence: true, length: {maximum: 50}
 end

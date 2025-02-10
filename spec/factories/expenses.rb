@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: expenses
@@ -24,7 +26,7 @@ FactoryBot.define do
   factory :expense do
     association :budget
     association :expense_category
-    description { "Test description" }
-    amount { "9.99" }
+    description { 'Test description' }
+    amount { '9.99' }
   end
 end

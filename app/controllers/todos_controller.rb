@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TodosController < ApplicationController
   before_action :todo, except: %i[index new create]
 
@@ -5,11 +7,11 @@ class TodosController < ApplicationController
     @todos = current_user.todos
   end
 
+  def show; end
+
   def new
     @todo = current_user.todos.new
   end
-
-  def show; end
 
   def edit; end
 
@@ -44,6 +46,6 @@ class TodosController < ApplicationController
   end
 
   def todo_params
-    params.require(:todo).permit(:title, :categorized)
+    params.expect(todo: %i[title categorized])
   end
 end

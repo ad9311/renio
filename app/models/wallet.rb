@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: wallets
@@ -18,12 +20,11 @@
 class Wallet < ApplicationRecord
   belongs_to :user
 
-
   has_many :budgets, dependent: :destroy
   has_many :account_receivables, dependent: :destroy
 
   def current_budget
-    uid = "#{id}-#{Date.today.month}-#{Date.today.year}"
+    uid = "#{id}-#{Time.zone.today.month}-#{Time.zone.today.year}"
     budgets.find_by(uid:)
   end
 end
