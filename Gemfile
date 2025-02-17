@@ -78,7 +78,7 @@ group :development do
   gem 'web-console'
 
   # Add annotations to your models [https://github.com/drwl/annotaterb]
-  gem 'annotaterb', '~> 4.13'
+  gem 'annotaterb', '~> 4.14'
 
   # Dockerize your Rails application [https://github.com/rails/dockerfile-rails]
   gem 'dockerfile-rails', '>= 1.7'
