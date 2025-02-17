@@ -70,7 +70,7 @@ group :development, :test do
   gem 'rubocop-rails', '~> 2.29'
 
   # Rubocop for RSpec [https://github.com/rubocop/rubocop-rspec]
-  gem 'rubocop-rspec', '~> 3.4'
+  gem 'rubocop-rspec', '~> 3.5'
 end
 
 group :development do
