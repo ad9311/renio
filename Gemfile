@@ -67,7 +67,7 @@ group :development, :test do
   gem 'pry', '~> 0.15.2'
 
   # Rubocop for Rails [https://github.com/rubocop/rubocop-rails]
-  gem 'rubocop-rails', '~> 2.29'
+  gem 'rubocop-rails', '~> 2.30'
 
   # Rubocop for RSpec [https://github.com/rubocop/rubocop-rspec]
   gem 'rubocop-rspec', '~> 3.4'
