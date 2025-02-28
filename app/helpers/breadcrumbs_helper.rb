@@ -31,7 +31,7 @@ module BreadcrumbsHelper
     when :index
       [{name: 'Budgets'}]
     when :show
-      [{name: 'Budget'}]
+      [{name: 'Budgets', path: budgets_path}, {name: 'Budget'}]
     when :edit
       [{name: 'Budget', path: budget_path(@budget)}, {name: 'Edit'}]
     else
@@ -60,7 +60,7 @@ module BreadcrumbsHelper
     when :index
       [{name: 'Account receivables'}]
     when :show
-      [{name: 'Account receivable'}]
+      [{name: 'Account receivables', path: account_receivables_path}, {name: 'Account receivable'}]
     when :new
       [{name: 'Account Receivables', path: account_receivables_path}, {name: 'New'}]
     when :edit
@@ -108,7 +108,7 @@ module BreadcrumbsHelper
     when :index
       [{name: 'Todos'}]
     when :show
-      [{name: 'Todo'}]
+      [{name: 'Todos', path: todos_path}, {name: 'Todo'}]
     when :new
       [{name: 'Todos', path: todos_path}, {name: 'New'}]
     when :edit
