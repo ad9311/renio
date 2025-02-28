@@ -1,0 +1,17 @@
+<%= render "shared/breadcrumbs", dataset: breadcrumbs_for(:tasks, :show) %>
+<section class="card">
+  <h2 class="title">Task</h2>
+  <div class="links-container flex items-center justify-between">
+    <%= link_to "Edit", edit_todo_task_path(@todo, @task) %>
+    <%= button_to "Delete",
+    todo_task_path(@todo, @task),
+    method: :delete,
+    class: "link-danger" %>
+  </div>
+  <hr>
+  <div class="inner-card">
+    <div class="flex justify-between items-center text-sm">
+      <%= @task.title %>
+    </div>
+  </div>
+</section>

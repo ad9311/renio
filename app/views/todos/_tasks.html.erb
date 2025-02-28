@@ -1,0 +1,14 @@
+<ul class="flex flex-col gap-2">
+  <% @tasks.each do |task| %>
+    <li class="inner-card inner-card-hover leading-none">
+      <%= link_to todo_task_path(@todo, task) do %>
+        <div class="mb-2">
+          <p class="inner-card-top-label"><%= task.priority.titleize %></p>
+        </div>
+        <div class="flex justify-between items-center text-sm">
+          <%= task.title %>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

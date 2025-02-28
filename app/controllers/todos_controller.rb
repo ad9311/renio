@@ -7,7 +7,9 @@ class TodosController < ApplicationController
     @todos = current_user.todos
   end
 
-  def show; end
+  def show
+    @tasks = todo.tasks.order(done: :asc, created_at: :desc)
+  end
 
   def new
     @todo = current_user.todos.new

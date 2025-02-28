@@ -1,0 +1,18 @@
+<%= render "shared/form_errors", model: @task %>
+<%= form_with model: [@todo, @task], class: "form" do |form| %>
+  <fieldset>
+    <%= form.label :title %>
+    <%= form.text_field :title, placeholder: "Title" %>
+  </fieldset>
+  <fieldset>
+    <%= form.label :priority %>
+    <%= form.select :priority,
+                Task.priorities.keys.map { |priority|
+                  [priority.humanize, priority]
+                },
+                selected: @task.priority %>
+  </fieldset>
+  <div class="actions">
+    <%= form.submit "Save", class: "submit" %>
+  </div>
+<% end %>

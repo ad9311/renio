@@ -19,6 +19,8 @@ module BreadcrumbsHelper
       breadcrumbs.concat breadcrumbs_for_expenses(action)
     when :todos
       breadcrumbs.concat breadcrumbs_for_todos(action)
+    when :tasks
+      breadcrumbs.concat breadcrumbs_for_tasks(action)
     else
       breadcrumbs
     end
@@ -114,6 +116,22 @@ module BreadcrumbsHelper
     when :edit
       show_path = {name: 'Todo', path: todo_path(@todo)}
       [show_path, {name: 'Edit'}]
+    else
+      []
+    end
+  end
+
+  def breadcrumbs_for_tasks(action)
+    todo = {name: 'Todo', path: todo_path(@todo)}
+
+    case action
+    when :new
+      [todo, {name: 'New task'}]
+    when :show
+      [todo, {name: 'Task'}]
+    when :edit
+      task = {name: 'Task', path: todo_task_path(@todo, @task)}
+      [todo, task, {name: 'Edit'}]
     else
       []
     end

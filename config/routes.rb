@@ -27,5 +27,7 @@ Rails.application.routes.draw do
     as: :account_receivable_update_status
 
   # Todos
-  resources :todos
+  resources :todos do
+    resources :tasks, except: :index
+  end
 end
