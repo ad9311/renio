@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_06_015409) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_28_014326) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -76,10 +76,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_06_015409) do
     t.index ["account_receivable_id"], name: "index_receivables_on_account_receivable_id"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "todo_id", null: false
+    t.string "title"
+    t.integer "priority"
+    t.boolean "done"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["todo_id"], name: "index_tasks_on_todo_id"
+  end
+
   create_table "todos", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title", null: false
-    t.boolean "categorized", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_todos_on_user_id"
@@ -110,6 +119,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_06_015409) do
   add_foreign_key "expenses", "expense_categories"
   add_foreign_key "payments", "account_receivables"
   add_foreign_key "receivables", "account_receivables"
+  add_foreign_key "tasks", "todos"
   add_foreign_key "todos", "users"
   add_foreign_key "wallets", "users"
 end
