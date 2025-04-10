@@ -1,0 +1,17 @@
+<%= render "shared/breadcrumbs", dataset: [] %>
+<section class="card">
+  <h1 class="title">Expense categories</h1>
+  <div class="links-container">
+    <%= link_to "New", new_expense_category_path %>
+  </div>
+  <hr>
+  <ul class="flex flex-col gap-2">
+    <% @expense_categories.each do |expense_category| %>
+      <li class="inner-card inner-card-hover leading-none">
+        <%= link_to expense_category_path(expense_category), class: 'block w-full' do %>
+          <%= expense_category.name %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</section>

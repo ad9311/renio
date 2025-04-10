@@ -1,0 +1,14 @@
+<%= render "shared/form_errors", model: @expense_category %>
+<%= form_with model: @expense_category, class: "form" do |form| %>
+  <fieldset>
+    <%= form.label :name %>
+    <%= form.text_field :name, placeholder: "Name" %>
+  </fieldset>
+  <fieldset>
+    <%= form.label :uid %>
+    <%= form.text_field :uid, placeholder: "UID" %>
+  </fieldset>
+  <div class="actions">
+    <%= form.submit "Save", class: "submit" %>
+  </div>
+<% end %>

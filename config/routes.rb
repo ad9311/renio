@@ -30,4 +30,10 @@ Rails.application.routes.draw do
   resources :todos do
     resources :tasks, except: :index
   end
+
+  # Admins
+  resources :admin_settings, only: :index
+
+  # Expense categories
+  resources :expense_categories, except: :destroy
 end

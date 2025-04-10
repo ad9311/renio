@@ -1,0 +1,20 @@
+<%= render "shared/breadcrumbs", dataset: [] %>
+<section class="card">
+  <h2 class="title">Expense category</h2>
+  <div class="links-container flex items-center justify-between">
+    <%= link_to "Edit", edit_expense_category_path(@expense_category) %>
+    <%= button_to "Delete",
+    expense_category_path(@expense_category),
+    method: :delete,
+    class: "link-danger" %>
+  </div>
+  <hr>
+  <div class="inner-card">
+    <div class="mb-2">
+      <p class="inner-card-top-label"><%= @expense_category.uid %></p>
+    </div>
+    <div class="flex justify-between items-center text-sm">
+      <%= @expense_category.name %>
+    </div>
+  </div>
+</section>

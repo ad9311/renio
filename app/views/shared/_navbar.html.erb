@@ -2,10 +2,15 @@
   <nav class="navbar justify-between">
     <%= link_to "RENIO", root_path, class: "link" %>
     <% if user_signed_in? %>
-      <%= button_to "Sign out",
-      destroy_user_session_path,
-      method: :delete,
-      class: "link-danger" %>
+      <div class="flex items-center gap-2">
+        <% if current_user.admin? %>
+         <%= link_to "Admin", admin_settings_path, class: "link" %>
+        <% end %>
+        <%= button_to "Sign out",
+        destroy_user_session_path,
+        method: :delete,
+        class: "link-danger" %>
+      </div>
     <% end %>
   </nav>
 </div>

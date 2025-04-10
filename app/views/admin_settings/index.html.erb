@@ -1,0 +1,12 @@
+<%= render "shared/breadcrumbs", dataset: [] %>
+<section class="card">
+  <h1 class="title">Admin settings</h1>
+  <hr>
+  <ul class="flex flex-col gap-2">
+    <% @settings.each do |setting| %>
+      <li class="inner-card inner-card-hover leading-none">
+        <%= link_to setting[:name], setting[:path], class: "block w-full" %>
+      </li>
+    <% end %>
+  </ul>
+</section>
