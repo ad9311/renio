@@ -2,6 +2,9 @@
 dataset: breadcrumbs_for(:account_receivables, :index) %>
 <section class="card">
   <h1 class="title">Accounts receivable</h1>
+  <div class="links-container">
+    <%= link_to "New", new_account_receivable_path %>
+  </div>
   <hr>
   <ul class="flex flex-col gap-2">
     <% @account_receivables.each do |account| %>

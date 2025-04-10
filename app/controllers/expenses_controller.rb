@@ -13,11 +13,11 @@ class ExpensesController < ApplicationController
   def edit; end
 
   def create
-    redirect_to_budget('Budget needs to have an amount') if @budget.amount.zero?
+    redirect_to budget_path(@budget), alert: 'Budget needs to have an amount' if @budget.amount.zero?
 
     @expense = budget.expenses.new(expense_params)
     if @expense.save
-      redirect_to_budget('Expense created successfully')
+      redirect_to new_budget_expense_path(budget), notice: 'Expense created successfully'
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,7 +25,7 @@ class ExpensesController < ApplicationController
 
   def update
     if @expense.update(expense_params)
-      redirect_to_budget('Expense updated successfully')
+      redirect_to budget_expense_path(budget, @expense), notice: 'Expense updated successfully'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class ExpensesController < ApplicationController
 
   def destroy
     @expense.destroy!
-    redirect_to_budget('Expense deleted successfully')
+    redirect_to new_budget_expense_path(budget), notice: 'Expense deleted successfully'
   end
 
   private
@@ -48,9 +48,5 @@ class ExpensesController < ApplicationController
 
   def expense_params
     params.expect(expense: %i[description amount expense_category_id])
-  end
-
-  def redirect_to_budget(notice)
-    redirect_to budget_path(budget), notice:
   end
 end
